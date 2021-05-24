@@ -7,6 +7,11 @@ require 'open-uri'
 # User.destroy_all
 
 # seeds generation upon CSV files
+cities = City.all
+cities.each do |city|
+  city.house_marketprice = 0
+  city.save
+end
 
 # Ouvrir le fichier population.csv
 p "Population seeds incoming"
@@ -447,20 +452,20 @@ average_per_city
 
 
 
-p "Fake price market seeds incoming"
-cities = City.all
-cities.each do |city|
-  if city.house_marketprice.nil?
-    if city.population <= 10000
-      city.update(house_marketprice: 1600, flat_marketprice: 1400, land_marketprice: 50)
-      city.save!
-    elsif (city.population > 10000 && city.population <= 100000)
-      city.update(house_marketprice: 2800, flat_marketprice: 2000, land_marketprice: 100)
-      city.save!
-    elsif city.population > 100000
-      city.update(house_marketprice: 3500, flat_marketprice: 2200, land_marketprice: 150)
-      city.save!
-    end
-  end
-end
+# p "Fake price market seeds incoming"
+# cities = City.all
+# cities.each do |city|
+#   if city.house_marketprice.nil?
+#     if city.population <= 10000
+#       city.update(house_marketprice: 1600, flat_marketprice: 1400, land_marketprice: 50)
+#       city.save!
+#     elsif (city.population > 10000 && city.population <= 100000)
+#       city.update(house_marketprice: 2800, flat_marketprice: 2000, land_marketprice: 100)
+#       city.save!
+#     elsif city.population > 100000
+#       city.update(house_marketprice: 3500, flat_marketprice: 2200, land_marketprice: 150)
+#       city.save!
+#     end
+#   end
+# end
 
