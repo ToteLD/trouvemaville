@@ -32,7 +32,7 @@ export default class extends Controller {
         this.clipboardTarget.classList.add("fa-clipboard")
         this.clipboardTarget.classList.add("far")
       } else if (data.status === "failed") {
-        console.log(data.errors.base[0])
+        this.spanTarget.innerText = "Comparateur déjà plein"
       }
     })
 
