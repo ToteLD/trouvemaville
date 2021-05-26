@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_085717) do
+ActiveRecord::Schema.define(version: 2021_05_26_132018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,24 @@ ActiveRecord::Schema.define(version: 2021_05_25_085717) do
     t.integer "geocode"
     t.integer "rating", default: 0, null: false
     t.string "photo"
+    t.boolean "handiwork", default: false
+    t.boolean "grocery", default: false
+    t.boolean "bakery", default: false
+    t.boolean "butchery", default: false
+    t.boolean "fish_market", default: false
+    t.boolean "bookstore", default: false
+    t.boolean "clothe", default: false
+    t.boolean "shoestore", default: false
+    t.boolean "it", default: false
+    t.boolean "furniture", default: false
+    t.boolean "sport", default: false
+    t.boolean "hardware", default: false
+    t.boolean "cosmetic", default: false
+    t.boolean "jewellery", default: false
+    t.boolean "plant", default: false
+    t.boolean "optic", default: false
+    t.boolean "medical_store", default: false
+    t.boolean "gas_station", default: false
   end
 
   create_table "comparators", force: :cascade do |t|
