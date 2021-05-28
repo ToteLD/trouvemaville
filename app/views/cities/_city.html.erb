@@ -68,27 +68,7 @@
           <span class="city_main_filters_titles">Age moyen</span>
           <span> <%= @city.age_average %> ans</span>
         </div>
-
-      <div class="commodity">
-        <span class="city_main_filters_titles">Commerces</span>
-        <span> <%= @city.commodity_count %> </span>
-        <!-- <% if @commodity_presence && @city.commodity_count > @commodity_count_threshold %>
-          <span style= "color:#0A7C06"> Commerces : </span>
-          <span> <%= @city.commodity_count %> </span>
-
-        <% elsif @commodity_presence == false %>
-          <span style= "color:#B4BCCC"> Commerces : </span>
-          <span> <%= @city.commodity_count %> </span>
-
-        <% else %>
-          <span style= "color:#D94111"> Commerces : </span>
-          <span> <%= @city.commodity_count %></span>
-        <% end %> -->
-      </div>
-
-
     </div>
-
 
     <!-- see cities controller for following thresholds variables -->
 
@@ -182,6 +162,16 @@
         </div>
       <% end %>
 
+      <% if @grocery_presence && @city.grocery %>
+        <div class="grocery">
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Epiceries </span>
+        </div>
+      <% elsif @grocery_presence && @city.grocery == false %>
+        <div class="grocery">
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Epiceries </span>
+        </div>
+      <% end %>
+
     </div>
 
      <div class="additional_city_filters">
@@ -232,6 +222,12 @@
         <% if @handiwork_presence == false && @city.handiwork %>
           <div class="additional_handiwork">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins de bricolage </span>
+          </div>
+        <% end %>
+
+        <% if @grocery_presence == false && @city.grocery %>
+          <div class="additional_grocery">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Epiceries </span>
           </div>
         <% end %>
 

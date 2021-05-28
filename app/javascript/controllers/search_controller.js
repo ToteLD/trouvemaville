@@ -11,6 +11,7 @@ export default class extends Controller {
     "network",
     "doctor",
     "handiwork",
+    "grocery",
     "maxDistanceKm",
     "maxPopulation",
     "maxAgeAverage",
@@ -48,12 +49,14 @@ export default class extends Controller {
 
     const handiwork = this.handiworkTarget.checked ? 'handiwork=1' : ''
 
+    const grocery = this.groceryTarget.checked ? 'grocery=1' : ''
+
     const max_population = this.maxPopulationTarget.value === undefined ? '' : `max_population=${this.maxPopulationTarget.value}`
 
     const max_age_average = this.maxAgeAverageTarget.value === undefined ? '' : `max_age_average=${this.maxAgeAverageTarget.value}`
 
     const query = `?${city}&${maxDisKm}&${com}&${primary}&${secondary}&${fibre}&${network}\
-                   &${doctor}&${handiwork}&${supermarket}&${max_population}&${max_age_average}`
+                   &${doctor}&${handiwork}&${grocery}&${supermarket}&${max_population}&${max_age_average}`
     return query
   }
 }
