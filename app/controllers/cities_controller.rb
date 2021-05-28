@@ -34,6 +34,7 @@ class CitiesController < ApplicationController
                                                                        primary_school: params[:primary_school],\
                                                                        secondary_school: params[:secondary_school],\
                                                                        max_population: params[:max_population],\
+                                                                       handiwork: params[:handiwork],\
                                                                        age_average: params[:max_age_average],\
                                                                        rating: rating(city) })
       }
@@ -82,6 +83,7 @@ class CitiesController < ApplicationController
     @secondary_school_presence = params[:secondary_school].present? && params[:secondary_school] == "1"
     @max_population_presence = params[:max_population].present? && params[:max_population].to_i >= 1
     @max_age_average_presence = params[:max_age_average].present? && params[:max_age_average].to_i >= 18
+    @handiwork_presence = params[:handiwork].present? && params[:handiwork] == "1"
 
     # city global rating calculation
     @criteria_selected_nb = 0
@@ -95,6 +97,7 @@ class CitiesController < ApplicationController
     @criteria_selected_nb += 1 if @secondary_school_presence
     @criteria_selected_nb += 1 if @max_population_presence
     @criteria_selected_nb += 1 if @max_age_average_presence
+    @criteria_selected_nb += 1 if @handiwork_presence
 
     @match_criteria_nb = 0
 
@@ -107,6 +110,7 @@ class CitiesController < ApplicationController
     @match_criteria_nb += 1 if @secondary_school_presence && city.secondary_school
     @match_criteria_nb += 1 if @max_population_presence && city.population <= params[:max_population].to_i
     @match_criteria_nb += 1 if @max_age_average_presence && city.age_average <= params[:max_age_average].to_i
+    @match_criteria_nb += 1 if @handiwork_presence && city.handiwork
 
     if @criteria_selected_nb > 0
       return ((@match_criteria_nb.to_f / @criteria_selected_nb) * 100).round

@@ -98,11 +98,11 @@
         <div class="doctor">
           <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Docteurs </span>
         </div>
-         <% elsif @doctor_presence && @city.doctor == false %>
+      <% elsif @doctor_presence && @city.doctor == false %>
         <div class="doctor">
           <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Docteurs </span>
         </div>
-        <% end %>
+      <% end %>
 
 
     <!-- Set network criteria color depending on user selection and city match values -->
@@ -172,6 +172,16 @@
       </div>
       <% end %>
 
+      <% if @handiwork_presence && @city.handiwork %>
+        <div class="handiwork">
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Magasins de bricolage </span>
+        </div>
+      <% elsif @handiwork_presence && @city.handiwork == false %>
+        <div class="handiwork">
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Magasins de bricolage </span>
+        </div>
+      <% end %>
+
     </div>
 
      <div class="additional_city_filters">
@@ -180,7 +190,7 @@
         <%if @doctor_presence == false && @city.doctor %>
           <div class="additional_doctor">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Docteurs </span>
-        </div>
+          </div>
         <% end %>
 
         <% if @network_presence == false && @city.network.to_f >= @network_fibre_threshold %>
@@ -214,11 +224,18 @@
         <% end %>
 
         <% if @secondary_school_presence == false && @city.secondary_school %>
-         <div class="additional_secondary_school">
-          <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Collèges et lycées </span>
+          <div class="additional_secondary_school">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Collèges et lycées </span>
           </div>
         <% end %>
-        </div>
+
+        <% if @handiwork_presence == false && @city.handiwork %>
+          <div class="additional_handiwork">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins de bricolage </span>
+          </div>
+        <% end %>
+
+      </div>
 
     </div>
 </div>

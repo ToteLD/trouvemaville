@@ -55,6 +55,9 @@
 
               <%= check_box_tag "commodity", 1, (:checked if params[:commodity].present?) %>
               <label for="commodity"><i class="fas fa-cash-register mr-2"></i>Commerces</label>
+
+               <%= check_box_tag "handiwork", 1, (:checked if params[:handiwork].present?) %>
+              <label for="handiwork"><i class="fas fa-tools mr-2"></i>Magasins de bricolage</label>
             </div>
       </div>
 
