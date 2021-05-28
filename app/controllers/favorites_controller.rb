@@ -1,7 +1,8 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
   def index
-    @favorites = current_user.favorite_cities.order(created_at: :desc).group_by { |city| city.saved_search }
+    @favorites = current_user.favorite_cities.order(created_at: :desc).group_by(&:saved_search)
+    # { |city| city.saved_search }
   end
 
   def create
@@ -14,6 +15,7 @@ class FavoritesController < ApplicationController
                                                   commodity: params[:commodity].present?,
                                                   doctor: params[:doctor].present?,
                                                   handiwork: params[:handiwork].present?,
+                                                  grocery: params[:grocery].present?,
                                                   max_distance_km: params[:location][:max_distance_km].to_i,
                                                   age_average: params[:max_age_average].present? ? params[:max_age_average] : nil,
                                                   max_population: params[:max_population].present? ? params[:max_population] : nil)

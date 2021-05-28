@@ -46,6 +46,10 @@
       <%= check_box_tag "handiwork", 1, (:checked if params[:handiwork].present?) %>
       <label for="handiwork"><i class="fas fa-tools mr-2"></i>Magasins de bricolage</label>
 
+      <%= check_box_tag "grocery", 1, (:checked if params[:grocery].present?) %>
+      <label for="grocery"><i class="fas fa-shopping-basket mr-2"></i>Epiceries</label>
+
+
     </div>
     <%= submit_tag "Rechercher", class: "btn btn-primary search-button"%>
   <% end %>
