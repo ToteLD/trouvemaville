@@ -36,6 +36,8 @@ class CitiesController < ApplicationController
                                                                        max_population: params[:max_population],\
                                                                        handiwork: params[:handiwork],\
                                                                        butchery: params[:butchery],\
+                                                                       bakery: params[:bakery],\
+                                                                       grocery: params[:grocery],\
                                                                        age_average: params[:max_age_average],\
                                                                        rating: rating(city) })
       }
@@ -87,6 +89,7 @@ class CitiesController < ApplicationController
     @handiwork_presence = params[:handiwork].present? && params[:handiwork] == "1"
     @grocery_presence = params[:grocery].present? && params[:grocery] == "1"
     @butchery_presence = params[:butchery].present? && params[:butchery] == "1"
+    @bakery_presence = params[:bakery].present? && params[:bakery] == "1"
 
     # city global rating calculation
     @criteria_selected_nb = 0
@@ -103,6 +106,7 @@ class CitiesController < ApplicationController
     @criteria_selected_nb += 1 if @handiwork_presence
     @criteria_selected_nb += 1 if @grocery_presence
     @criteria_selected_nb += 1 if @butchery_presence
+    @criteria_selected_nb += 1 if @bakery_presence
 
     @match_criteria_nb = 0
 
@@ -118,6 +122,7 @@ class CitiesController < ApplicationController
     @match_criteria_nb += 1 if @handiwork_presence && city.handiwork
     @match_criteria_nb += 1 if @grocery_presence && city.grocery
     @match_criteria_nb += 1 if @butchery_presence && city.butchery
+    @match_criteria_nb += 1 if @bakery_presence && city.bakery
 
     if @criteria_selected_nb.positive?
       return ((@match_criteria_nb.to_f / @criteria_selected_nb) * 100).round

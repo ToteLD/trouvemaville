@@ -182,6 +182,16 @@
         </div>
       <% end %>
 
+      <% if @bakery_presence && @city.bakery %>
+        <div class="bakery">
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Boulangeries </span>
+        </div>
+      <% elsif @bakery_presence && @city.bakery == false %>
+        <div class="bakery">
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Boulangeries </span>
+        </div>
+      <% end %>
+
     </div>
 
      <div class="additional_city_filters">
@@ -244,6 +254,12 @@
         <% if @butchery_presence == false && @city.butchery %>
           <div class="additional_butchery">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Boucheries </span>
+          </div>
+        <% end %>
+
+        <% if @bakery_presence == false && @city.bakery %>
+          <div class="additional_bakery">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Boulangeries </span>
           </div>
         <% end %>
 
