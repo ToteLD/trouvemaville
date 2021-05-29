@@ -15,6 +15,7 @@ export default class extends Controller {
     "butchery",
     "bakery",
     "bookstore",
+    "fish_market",
     "maxDistanceKm",
     "maxPopulation",
     "maxAgeAverage",
@@ -60,13 +61,15 @@ export default class extends Controller {
 
     const bookstore = this.bookstoreTarget.checked ? 'bookstore=1' : ''
 
+    const fish_market = this.fish_marketTarget.checked ? 'fish_market=1' : ''
+
     const max_population = this.maxPopulationTarget.value === undefined ? '' : `max_population=${this.maxPopulationTarget.value}`
 
     const max_age_average = this.maxAgeAverageTarget.value === undefined ? '' : `max_age_average=${this.maxAgeAverageTarget.value}`
 
     const query = `?${city}&${maxDisKm}&${com}&${primary}&${secondary}&${fibre}&${network}\
-                   &${doctor}&${handiwork}&${grocery}&${butchery}&${bakery}&${bookstore}&${supermarket}&${max_population}\
-                   &${max_age_average}`
+                   &${doctor}&${handiwork}&${grocery}&${butchery}&${bakery}&${bookstore}&${fish_market}&${supermarket}\
+                   &${max_population}&${max_age_average}`
     return query
   }
 }

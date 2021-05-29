@@ -202,6 +202,16 @@
         </div>
       <% end %>
 
+      <% if @fish_market_presence && @city.fish_market %>
+        <div class="fish_market">
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Poissonneries </span>
+        </div>
+      <% elsif @fish_market_presence && @city.fish_market == false %>
+        <div class="fish_market">
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Poissonneries </span>
+        </div>
+      <% end %>
+
     </div>
 
      <div class="additional_city_filters">
@@ -279,6 +289,11 @@
           </div>
         <% end %>
 
+        <% if @fish_market_presence == false && @city.fish_market %>
+          <div class="additional_fish_marker">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Poissonneries </span>
+          </div>
+        <% end %>
 
       </div>
 
