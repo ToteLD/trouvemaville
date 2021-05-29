@@ -55,6 +55,10 @@
       <%= check_box_tag "bakery", 1, (:checked if params[:bakery].present?) %>
       <label for="bakery"><i class="fas fa-bread-slice mr-2"></i>Boulangeries</label>
 
+      <%= check_box_tag "bookstore", 1, (:checked if params[:bookstore].present?) %>
+      <label for="bookstore"><i class="fas fa-book-open mr-2"></i>Librairies</label>
+
+
     </div>
     <%= submit_tag "Rechercher", class: "btn btn-primary search-button"%>
   <% end %>
