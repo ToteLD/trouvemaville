@@ -62,6 +62,9 @@
               <%= check_box_tag "grocery", 1, (:checked if params[:grocery].present?) %>
               <label for="grocery"><i class="fas fa-shopping-basket mr-2"></i>Epiceries</label>
 
+              <%= check_box_tag "butchery", 1, (:checked if params[:butchery].present?) %>
+              <label for="butchery"><i class="fas fa-drumstick-bite mr-2"></i>Boucheries</label>
+
             </div>
       </div>
 

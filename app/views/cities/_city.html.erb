@@ -172,6 +172,16 @@
         </div>
       <% end %>
 
+      <% if @butchery_presence && @city.butchery %>
+        <div class="butchery">
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Boucheries </span>
+        </div>
+      <% elsif @butchery_presence && @city.butchery == false %>
+        <div class="butchery">
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Boucheries </span>
+        </div>
+      <% end %>
+
     </div>
 
      <div class="additional_city_filters">
@@ -228,6 +238,12 @@
         <% if @grocery_presence == false && @city.grocery %>
           <div class="additional_grocery">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Epiceries </span>
+          </div>
+        <% end %>
+
+        <% if @butchery_presence == false && @city.butchery %>
+          <div class="additional_butchery">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Boucheries </span>
           </div>
         <% end %>
 
