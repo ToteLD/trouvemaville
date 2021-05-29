@@ -40,6 +40,8 @@
         <p>Boulangeries</p>
         <p>Librairies</p>
         <p>Magasins de vêtements</p>
+        <p>Magasins de chaussures</p>
+        <p>Poissonneries</p>
       </div>
     </div>
 
@@ -131,6 +133,18 @@
             <% end %>
 
             <% if compared_city.city.clothe %>
+              <p><span style= "color:#0A7C06"><i class="fas fa-check-circle"></i></span></p>
+            <% else %>
+              <p><span class="comparator-underline">—</span></p>
+            <% end %>
+
+            <% if compared_city.city.shoestore %>
+              <p><span style= "color:#0A7C06"><i class="fas fa-check-circle"></i></span></p>
+            <% else %>
+              <p><span class="comparator-underline">—</span></p>
+            <% end %>
+          
+            <% if compared_city.city.fish_market %>
               <p><span style= "color:#0A7C06"><i class="fas fa-check-circle"></i></span></p>
             <% else %>
               <p><span class="comparator-underline">—</span></p>

@@ -40,6 +40,8 @@ class CitiesController < ApplicationController
                                                                        grocery: params[:grocery],\
                                                                        bookstore: params[:bookstore],\
                                                                        clothe: params[:clothe],\
+                                                                       shoestore: params[:shoestore],\
+                                                                       fish_market: params[:fish_market],\
                                                                        age_average: params[:max_age_average],\
                                                                        rating: rating(city) })
       }
@@ -94,6 +96,8 @@ class CitiesController < ApplicationController
     @bakery_presence = params[:bakery].present? && params[:bakery] == "1"
     @bookstore_presence = params[:bookstore].present? && params[:bookstore] == "1"
     @clothe_presence = params[:clothe].present? && params[:clothe] == "1"
+    @shoestore_presence = params[:shoestore].present? && params[:shoestore] == "1"
+    @fish_market_presence = params[:fish_market].present? && params[:fish_market] == "1"
 
     # city global rating calculation
     @criteria_selected_nb = 0
@@ -113,6 +117,8 @@ class CitiesController < ApplicationController
     @criteria_selected_nb += 1 if @bakery_presence
     @criteria_selected_nb += 1 if @bookstore_presence
     @criteria_selected_nb += 1 if @clothe_presence
+    @criteria_selected_nb += 1 if @shoestore_presence
+    @criteria_selected_nb += 1 if @fish_market_presence
 
     @match_criteria_nb = 0
 
@@ -131,6 +137,8 @@ class CitiesController < ApplicationController
     @match_criteria_nb += 1 if @bakery_presence && city.bakery
     @match_criteria_nb += 1 if @bookstore_presence && city.bookstore
     @match_criteria_nb += 1 if @clothe_presence && city.clothe
+    @match_criteria_nb += 1 if @shoestore_presence && city.shoestore
+    @match_criteria_nb += 1 if @fish_market_presence && city.fish_market
 
     if @criteria_selected_nb.positive?
       return ((@match_criteria_nb.to_f / @criteria_selected_nb) * 100).round

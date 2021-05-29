@@ -209,6 +209,22 @@
       <% elsif @clothe_presence && @city.clothe == false %>
         <div class="clothe">
           <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Magasins de vêtements </span>
+
+      <% if @shoestore_presence && @city.shoestore %>
+        <div class="shoestore">
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Magasins de chaussures </span>
+        </div>
+      <% elsif @shoestore_presence && @city.shoestore == false %>
+        <div class="shoestore">
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Magasins de chaussures </span>
+
+      <% if @fish_market_presence && @city.fish_market %>
+        <div class="fish_market">
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Poissonneries </span>
+        </div>
+      <% elsif @fish_market_presence && @city.fish_market == false %>
+        <div class="fish_market">
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Poissonneries </span>
         </div>
       <% end %>
 
@@ -292,6 +308,18 @@
         <% if @clothe_presence == false && @city.clothe %>
           <div class="additional_clothe">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins de vêtements </span>
+          </div>
+        <% end %>
+        
+        <% if @shoestore_presence == false && @city.shoestore %>
+          <div class="additional_shoestore">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins de chaussures </span>
+          </div>
+        <% end %>
+
+        <% if @fish_market_presence == false && @city.fish_market %>
+          <div class="additional_fish_marker">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Poissonneries </span>
           </div>
         <% end %>
 
