@@ -202,6 +202,14 @@
         </div>
       <% end %>
 
+      <% if @clothe_presence && @city.clothe %>
+        <div class="clothe">
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Magasins de vêtements </span>
+        </div>
+      <% elsif @clothe_presence && @city.clothe == false %>
+        <div class="clothe">
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Magasins de vêtements </span>
+
       <% if @shoestore_presence && @city.shoestore %>
         <div class="shoestore">
           <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Magasins de chaussures </span>
@@ -297,6 +305,12 @@
           </div>
         <% end %>
 
+        <% if @clothe_presence == false && @city.clothe %>
+          <div class="additional_clothe">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins de vêtements </span>
+          </div>
+        <% end %>
+        
         <% if @shoestore_presence == false && @city.shoestore %>
           <div class="additional_shoestore">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins de chaussures </span>

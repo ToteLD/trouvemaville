@@ -58,6 +58,9 @@
       <%= check_box_tag "bookstore", 1, (:checked if params[:bookstore].present?) %>
       <label for="bookstore"><i class="fas fa-book-open mr-2"></i>Librairies</label>
 
+      <%= check_box_tag "clothe", 1, (:checked if params[:clothe].present?) %>
+      <label for="clothe"><i class="fas fa-tshirt mr-2"></i>Magasins de vêtements</label>
+
       <%= check_box_tag "shoestore", 1, (:checked if params[:shoestore].present?) %>
       <label for="shoestore"><i class="fas fa-shoe-prints mr-2"></i>Magasins de chaussures</label>
 

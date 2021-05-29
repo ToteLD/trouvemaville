@@ -15,6 +15,7 @@ export default class extends Controller {
     "butchery",
     "bakery",
     "bookstore",
+    "clothe",
     "shoestore",
     "fish_market",
     "maxDistanceKm",
@@ -62,6 +63,8 @@ export default class extends Controller {
 
     const bookstore = this.bookstoreTarget.checked ? 'bookstore=1' : ''
 
+    const clothe = this.clotheTarget.checked ? 'clothe=1' : ''
+
     const shoestore = this.shoestoreTarget.checked ? 'shoestore=1' : ''
 
     const fish_market = this.fish_marketTarget.checked ? 'fish_market=1' : ''
@@ -72,7 +75,7 @@ export default class extends Controller {
 
     const query = `?${city}&${maxDisKm}&${com}&${primary}&${secondary}&${fibre}&${network}\
 
-                   &${doctor}&${handiwork}&${grocery}&${butchery}&${bakery}&${bookstore}&${shoestore}&${fish_market}${supermarket}&${max_population}\
+                   &${doctor}&${handiwork}&${grocery}&${butchery}&${bakery}&${bookstore}&${shoestore}&${clothe}${fish_market}${supermarket}&${max_population}\
                    &${max_age_average}`
 
     return query
