@@ -37,6 +37,7 @@
         <p>Magasins de bricolage</p>
         <p>Epiceries</p>
         <p>Boucheries</p>
+        <p>Boulangeries</p>
       </div>
     </div>
 
@@ -115,6 +116,11 @@
               <p><span class="comparator-underline">—</span></p>
             <% end %>
 
+            <% if compared_city.city.bakery %>
+              <p><span style= "color:#0A7C06"><i class="fas fa-check-circle"></i></span></p>
+            <% else %>
+              <p><span class="comparator-underline">—</span></p>
+            <% end %>
           </div>
         </div>
       <% end %>
