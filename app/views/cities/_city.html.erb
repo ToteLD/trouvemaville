@@ -232,6 +232,16 @@
         </div>
       <% end %>
 
+      <% if @hardware_presence && @city.hardware %>
+        <div class="hardware">
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Drogueries quincailleries </span>
+        </div>
+      <% elsif @hardware_presence && @city.hardware == false %>
+        <div class="hardware">
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Drogueries quincailleries </span>
+         </div>
+      <% end %>
+
       <% if @jewellery_presence && @city.jewellery %>
         <div class="jewellery">
           <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Bijouteries </span>
@@ -239,7 +249,9 @@
       <% elsif @jewellery_presence && @city.jewellery == false %>
         <div class="jewellery">
           <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Bijouteries </span>
-
+        </div>
+      <% end %>
+      
       <% if @cosmetic_presence && @city.cosmetic %>
         <div class="cosmetic">
           <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Parfumeries </span>
@@ -345,6 +357,12 @@
           </div>
         <% end %>
 
+        <% if @hardware_presence == false && @city.hardware %>
+          <div class="additional_hardware">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Drogueries quincailleries </span>
+          </div>
+        <% end %>
+       
         <% if @jewellery_presence == false && @city.jewellery %>
           <div class="additional_jewellery">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Bijouteries </span>
