@@ -18,6 +18,7 @@ export default class extends Controller {
     "clothe",
     "shoestore",
     "fish_market",
+    "hardware",
     "maxDistanceKm",
     "maxPopulation",
     "maxAgeAverage",
@@ -69,13 +70,15 @@ export default class extends Controller {
 
     const fish_market = this.fish_marketTarget.checked ? 'fish_market=1' : ''
 
+    const hardware = this.hardwareTarget.checked ? 'hardware=1' : ''
+
     const max_population = this.maxPopulationTarget.value === undefined ? '' : `max_population=${this.maxPopulationTarget.value}`
 
     const max_age_average = this.maxAgeAverageTarget.value === undefined ? '' : `max_age_average=${this.maxAgeAverageTarget.value}`
 
     const query = `?${city}&${maxDisKm}&${com}&${primary}&${secondary}&${fibre}&${network}\
 
-                   &${doctor}&${handiwork}&${grocery}&${butchery}&${bakery}&${bookstore}&${shoestore}&${clothe}${fish_market}${supermarket}&${max_population}\
+                   &${doctor}&${handiwork}&${grocery}&${butchery}&${bakery}&${bookstore}&${shoestore}&${clothe}&${fish_market}&${hardware}&${supermarket}&${max_population}\
                    &${max_age_average}`
 
     return query
