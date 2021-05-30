@@ -43,6 +43,8 @@
         <p>Magasins de chaussures</p>
         <p>Poissonneries</p>
         <p>Drogueries quincailleries</p>
+        <p>Bijouteries</p>
+        <p>Parfumeries</p>
       </div>
     </div>
 
@@ -152,6 +154,18 @@
             <% end %>
 
             <% if compared_city.city.hardware %>
+              <p><span style= "color:#0A7C06"><i class="fas fa-check-circle"></i></span></p>
+            <% else %>
+              <p><span class="comparator-underline">—</span></p>
+            <% end %>
+          
+            <% if compared_city.city.jewellery %>
+              <p><span style= "color:#0A7C06"><i class="fas fa-check-circle"></i></span></p>
+            <% else %>
+              <p><span class="comparator-underline">—</span></p>
+            <% end %>
+            
+            <% if compared_city.city.cosmetic %>
               <p><span style= "color:#0A7C06"><i class="fas fa-check-circle"></i></span></p>
             <% else %>
               <p><span class="comparator-underline">—</span></p>

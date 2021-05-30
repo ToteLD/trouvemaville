@@ -97,6 +97,12 @@
             <%= f.check_box :hardware, "data-search-target": "hardware" %>
             <label for="hardware"><i class="fas fa-brush mr-2"></i>Drogueries quincailleries</label>
 
+            <%= f.check_box :jewellery, "data-search-target": "jewellery" %>
+            <label for="jewellery"><i class="fas fa-gem mr-2"></i>Bijouteries</label>
+
+            <%= f.check_box :cosmetic, "data-search-target": "cosmetic" %>
+            <label for="cosmetic"><i class="fas fa-magic mr-2"></i>Parfumeries</label>
+
             <div class="btn-icon" data-action="click->search#navigate">
               <i class="fas fa-search-location"></i>
             </div>
