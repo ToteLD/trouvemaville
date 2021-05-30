@@ -44,6 +44,7 @@ class CitiesController < ApplicationController
                                                                        fish_market: params[:fish_market],\
                                                                        jewellery: params[:jewellery],\
                                                                        cosmetic: params[:cosmetic],\
+                                                                       plant: params[:plant],\
                                                                        age_average: params[:max_age_average],\
                                                                        rating: rating(city) })
       }
@@ -102,6 +103,7 @@ class CitiesController < ApplicationController
     @fish_market_presence = params[:fish_market].present? && params[:fish_market] == "1"
     @jewellery_presence = params[:jewellery].present? && params[:jewellery] == "1"
     @cosmetic_presence = params[:cosmetic].present? && params[:cosmetic] == "1"
+    @plant_presence = params[:plant].present? && params[:plant] == "1"
 
     # city global rating calculation
     @criteria_selected_nb = 0
@@ -125,7 +127,7 @@ class CitiesController < ApplicationController
     @criteria_selected_nb += 1 if @fish_market_presence
     @criteria_selected_nb += 1 if @jewellery_presence
     @criteria_selected_nb += 1 if @cosmetic_presence
-
+    @criteria_selected_nb += 1 if @plant_presence
 
     @match_criteria_nb = 0
 
@@ -148,6 +150,7 @@ class CitiesController < ApplicationController
     @match_criteria_nb += 1 if @fish_market_presence && city.fish_market
     @match_criteria_nb += 1 if @jewellery_presence && city.jewellery
     @match_criteria_nb += 1 if @cosmetic_presence && city.cosmetic
+    @match_criteria_nb += 1 if @plant_presence && city.plant
 
     if @criteria_selected_nb.positive?
       return ((@match_criteria_nb.to_f / @criteria_selected_nb) * 100).round
