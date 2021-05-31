@@ -42,6 +42,8 @@ class CitiesController < ApplicationController
                                                                        clothe: params[:clothe],\
                                                                        shoestore: params[:shoestore],\
                                                                        fish_market: params[:fish_market],\
+                                                                       it: params[:it],\
+                                                                       hardware: params[:hardware],\
                                                                        jewellery: params[:jewellery],\
                                                                        cosmetic: params[:cosmetic],\
                                                                        plant: params[:plant],\
@@ -101,6 +103,8 @@ class CitiesController < ApplicationController
     @clothe_presence = params[:clothe].present? && params[:clothe] == "1"
     @shoestore_presence = params[:shoestore].present? && params[:shoestore] == "1"
     @fish_market_presence = params[:fish_market].present? && params[:fish_market] == "1"
+    @it_presence = params[:it].present? && params[:it] == "1"
+    @hardware_presence = params[:hardware].present? && params[:hardware] == "1"
     @jewellery_presence = params[:jewellery].present? && params[:jewellery] == "1"
     @cosmetic_presence = params[:cosmetic].present? && params[:cosmetic] == "1"
     @plant_presence = params[:plant].present? && params[:plant] == "1"
@@ -125,6 +129,8 @@ class CitiesController < ApplicationController
     @criteria_selected_nb += 1 if @clothe_presence
     @criteria_selected_nb += 1 if @shoestore_presence
     @criteria_selected_nb += 1 if @fish_market_presence
+    @criteria_selected_nb += 1 if @it_presence
+    @criteria_selected_nb += 1 if @hardware_presence
     @criteria_selected_nb += 1 if @jewellery_presence
     @criteria_selected_nb += 1 if @cosmetic_presence
     @criteria_selected_nb += 1 if @plant_presence
@@ -148,6 +154,8 @@ class CitiesController < ApplicationController
     @match_criteria_nb += 1 if @clothe_presence && city.clothe
     @match_criteria_nb += 1 if @shoestore_presence && city.shoestore
     @match_criteria_nb += 1 if @fish_market_presence && city.fish_market
+    @match_criteria_nb += 1 if @it_presence && city.it
+    @match_criteria_nb += 1 if @hardware_presence && city.hardware
     @match_criteria_nb += 1 if @jewellery_presence && city.jewellery
     @match_criteria_nb += 1 if @cosmetic_presence && city.cosmetic
     @match_criteria_nb += 1 if @plant_presence && city.plant
