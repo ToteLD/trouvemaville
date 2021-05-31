@@ -22,6 +22,7 @@ export default class extends Controller {
     "hardware",
     "jewellery",
     "cosmetic",
+    "plant",
     "maxDistanceKm",
     "maxPopulation",
     "maxAgeAverage",
@@ -81,6 +82,8 @@ export default class extends Controller {
 
     const cosmetic = this.cosmeticTarget.checked ? 'cosmetic=1' : ''
 
+    const plant = this.plantTarget.checked ? 'plant=1' : ''
+
     const max_population = this.maxPopulationTarget.value === undefined ? '' : `max_population=${this.maxPopulationTarget.value}`
 
     const max_age_average = this.maxAgeAverageTarget.value === undefined ? '' : `max_age_average=${this.maxAgeAverageTarget.value}`
@@ -88,7 +91,7 @@ export default class extends Controller {
     const query = `?${city}&${maxDisKm}&${com}&${primary}&${secondary}&${fibre}&${network}\
                    &${doctor}&${handiwork}&${grocery}&${butchery}&${bakery}&${bookstore}\
                    &${shoestore}&${clothe}&${fish_market}&${jewellery}&${cosmetic}&${hardware}&${supermarket}&${max_population}\
-                   &${it}/
+                   &${it}&${plant}/
                    &${max_age_average}`
 
     return query
