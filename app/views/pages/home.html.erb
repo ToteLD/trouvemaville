@@ -31,9 +31,11 @@
         </div>
 
         <div class="form-features">
-          <h3>Ajoutez des critères supplémentaires</h3>
-            <div class="checkboxes">
-
+          <div class="d-flex">
+            <h3 id="home-additionnals">Ajoutez des critères supplémentaires</h3>
+            <i id="clickable-arrow"class="fas fa-sort-down"></i>
+          </div>
+            <div class="checkboxes hidden" id="home-checkboxes">
 
               <%= check_box_tag "primary_school",1, (:checked if params[:primary_school].present?) %>
               <label for="primary_school"><i class="fas fa-child mr-2"></i>Maternelles et primaires</label>
