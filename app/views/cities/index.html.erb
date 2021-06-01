@@ -67,6 +67,9 @@
       <%= check_box_tag "fish_market", 1, (:checked if params[:fish_market].present?) %>
       <label for="fish_market"><i class="fas fa-fish mr-2"></i>Poissonneries</label>
 
+      <%= check_box_tag "it", 1, (:checked if params[:it].present?) %>
+      <label for="it"><i class="fas fa-blender-phone mr-2"></i>Magasins d'électroménager</label>
+
       <%= check_box_tag "hardware", 1, (:checked if params[:hardware].present?) %>
       <label for="hardware"><i class="fas fa-brush mr-2"></i>Drogueries quincailleries</label>
 
@@ -78,6 +81,9 @@
 
       <%= check_box_tag "optic", 1, (:checked if params[:optic].present?) %>
       <label for="optic"><i class="fas fa-glasses mr-2"></i>Magasins d'optiques</label>
+
+      <%= check_box_tag "plant", 1, (:checked if params[:plant].present?) %>
+      <label for="plant"><i class="fas fa-leaf mr-2"></i>Fleuristes Jardineries</label>
 
     </div>
     <%= submit_tag "Rechercher", class: "btn btn-primary search-button"%>
