@@ -18,6 +18,7 @@ export default class extends Controller {
     "clothe",
     "shoestore",
     "fish_market",
+    "sport",
     "it",
     "hardware",
     "jewellery",
@@ -75,6 +76,8 @@ export default class extends Controller {
 
     const fish_market = this.fish_marketTarget.checked ? 'fish_market=1' : ''
 
+    const sport = this.sportTarget.checked ? 'sport=1' : ''
+    
     const it = this.itTarget.checked ? 'it=1' : ''
 
     const hardware = this.hardwareTarget.checked ? 'hardware=1' : ''
@@ -94,7 +97,7 @@ export default class extends Controller {
     const query = `?${city}&${maxDisKm}&${com}&${primary}&${secondary}&${fibre}&${network}\
                    &${doctor}&${handiwork}&${grocery}&${butchery}&${bakery}&${bookstore}\
                    &${shoestore}&${clothe}&${fish_market}&${jewellery}&${cosmetic}&${hardware}&${supermarket}&${max_population}\
-                   &${it}&${plant}&${optic}/
+                   &${it}&${plant}&${optic}&${sport}/
                    &${max_age_average}`
 
     return query
