@@ -182,4 +182,18 @@ input:focus::placeholder {
  }
 }
 
+.hidden {
+  display: none;
+}
 
+.fa-sort-down {
+  margin-top: 0px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.fa-sort-up {
+  margin-top: 4px;
+  cursor: pointer;
+  margin-left: 5px;;
+}

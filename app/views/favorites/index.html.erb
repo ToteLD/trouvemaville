@@ -97,13 +97,32 @@
             <%= f.check_box :furniture, "data-search-target": "furniture" %>
             <label for="furniture"><i class="fas fa-couch mr-2"></i>Magasins de meubles</label>
 
+            <%= f.check_box :sport, "data-search-target": "sport" %>
+            <label for="sport"><i class="fas fa-running mr-2"></i>Magasins de sports</label>
+
+            <%= f.check_box :it, "data-search-target": "it" %>
+            <label for="it"><i class="fas fa-blender-phone mr-2"></i>Magasins d'électroménager</label>
+
+            <%= f.check_box :hardware, "data-search-target": "hardware" %>
+            <label for="hardware"><i class="fas fa-brush mr-2"></i>Drogueries quincailleries</label>
+
+            <%= f.check_box :jewellery, "data-search-target": "jewellery" %>
+            <label for="jewellery"><i class="fas fa-gem mr-2"></i>Bijouteries</label>
+
+            <%= f.check_box :cosmetic, "data-search-target": "cosmetic" %>
+            <label for="cosmetic"><i class="fas fa-magic mr-2"></i>Parfumeries</label>
+
+            <%= f.check_box :optic, "data-search-target": "optic" %>
+            <label for="optic"><i class="fas fa-glasses mr-2"></i>Magasins d'optiques</label>
+
+            <%= f.check_box :plant, "data-search-target": "plant" %>
+            <label for="plant"><i class="fas fa-leaf mr-2"></i>Fleuristes Jardineries</label>
+
             <div class="btn-icon" data-action="click->search#navigate">
               <i class="fas fa-search-location"></i>
             </div>
 
           </div>
-
-
         </div>
 
         <div class="fav-city-container">
