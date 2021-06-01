@@ -46,6 +46,7 @@
         <p>Drogueries quincailleries</p>
         <p>Bijouteries</p>
         <p>Parfumeries</p>
+        <p>Magasins d'optiques</p>
         <p>Fleuristes Parfumeries</p>
       </div>
     </div>
@@ -179,6 +180,12 @@
               <p><span class="comparator-underline">—</span></p>
             <% end %>
 
+            <% if compared_city.city.optic %>
+              <p><span style= "color:#0A7C06"><i class="fas fa-check-circle"></i></span></p>
+            <% else %>
+              <p><span class="comparator-underline">—</span></p>
+            <% end %>
+          
             <% if compared_city.city.plant %>
               <p><span style= "color:#0A7C06"><i class="fas fa-check-circle"></i></span></p>
             <% else %>

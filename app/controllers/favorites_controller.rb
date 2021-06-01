@@ -26,6 +26,7 @@ class FavoritesController < ApplicationController
                                                   hardware: params[:hardware].present?,
                                                   jewellery: params[:jewellery].present?,
                                                   cosmetic: params[:cosmetic].present?,
+                                                  optic: params[:optic].present?,
                                                   plant: params[:plant].present?,
                                                   max_distance_km: params[:location][:max_distance_km].to_i,
                                                   age_average: params[:max_age_average].present? ? params[:max_age_average] : nil,

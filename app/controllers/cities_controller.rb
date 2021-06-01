@@ -46,6 +46,7 @@ class CitiesController < ApplicationController
                                                                        hardware: params[:hardware],\
                                                                        jewellery: params[:jewellery],\
                                                                        cosmetic: params[:cosmetic],\
+                                                                       optic: params[:optic],\
                                                                        plant: params[:plant],\
                                                                        age_average: params[:max_age_average],\
                                                                        rating: rating(city) })
@@ -107,6 +108,7 @@ class CitiesController < ApplicationController
     @hardware_presence = params[:hardware].present? && params[:hardware] == "1"
     @jewellery_presence = params[:jewellery].present? && params[:jewellery] == "1"
     @cosmetic_presence = params[:cosmetic].present? && params[:cosmetic] == "1"
+    @optic_presence = params[:optic].present? && params[:optic] == "1"
     @plant_presence = params[:plant].present? && params[:plant] == "1"
 
     # city global rating calculation
@@ -133,6 +135,7 @@ class CitiesController < ApplicationController
     @criteria_selected_nb += 1 if @hardware_presence
     @criteria_selected_nb += 1 if @jewellery_presence
     @criteria_selected_nb += 1 if @cosmetic_presence
+    @criteria_selected_nb += 1 if @optic_presence
     @criteria_selected_nb += 1 if @plant_presence
 
     @match_criteria_nb = 0
@@ -158,8 +161,9 @@ class CitiesController < ApplicationController
     @match_criteria_nb += 1 if @hardware_presence && city.hardware
     @match_criteria_nb += 1 if @jewellery_presence && city.jewellery
     @match_criteria_nb += 1 if @cosmetic_presence && city.cosmetic
+    @match_criteria_nb += 1 if @optic_presence && city.optic
     @match_criteria_nb += 1 if @plant_presence && city.plant
-
+    
     if @criteria_selected_nb.positive?
       return ((@match_criteria_nb.to_f / @criteria_selected_nb) * 100).round
     else
