@@ -23,6 +23,12 @@ class FavoritesController < ApplicationController
                                                   shoestore: params[:shoestore].present?,
                                                   fish_market: params[:fish_market].present?,
                                                   sport: params[:sport].present?,
+                                                  it: params[:it].present?,
+                                                  hardware: params[:hardware].present?,
+                                                  jewellery: params[:jewellery].present?,
+                                                  cosmetic: params[:cosmetic].present?,
+                                                  optic: params[:optic].present?,
+                                                  plant: params[:plant].present?,
                                                   max_distance_km: params[:location][:max_distance_km].to_i,
                                                   age_average: params[:max_age_average].present? ? params[:max_age_average] : nil,
                                                   max_population: params[:max_population].present? ? params[:max_population] : nil)
