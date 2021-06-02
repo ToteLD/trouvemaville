@@ -30,6 +30,7 @@ class FavoritesController < ApplicationController
                                                   cosmetic: params[:cosmetic].present?,
                                                   optic: params[:optic].present?,
                                                   plant: params[:plant].present?,
+                                                  gas_station: params[:gas_station].present?,
                                                   max_distance_km: params[:location][:max_distance_km].to_i,
                                                   age_average: params[:max_age_average].present? ? params[:max_age_average] : nil,
                                                   max_population: params[:max_population].present? ? params[:max_population] : nil)

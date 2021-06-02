@@ -27,7 +27,7 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { indexShow } from '../custom/toggleIndexSearchBar';
-import { showMoreCriteria } from '../custom/showMoreCriteria'
+import { showMoreCriteria } from '../custom/showMoreCriteria';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();

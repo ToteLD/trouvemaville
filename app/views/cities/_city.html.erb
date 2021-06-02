@@ -252,7 +252,7 @@
           <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Magasins d'électroménager </span>
          </div>
       <% end %>
-      
+
       <% if @hardware_presence && @city.hardware %>
         <div class="hardware">
           <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Drogueries quincailleries </span>
@@ -300,6 +300,16 @@
       <% elsif @plant_presence && @city.plant == false %>
         <div class="plant">
           <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Fleuristes Jardineries </span>
+        </div>
+      <% end %>
+
+      <% if @gas_station_presence && @city.gas_station %>
+        <div class="gas_station">
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Stations services </span>
+        </div>
+      <% elsif @gas_station_presence && @city.gas_station == false %>
+        <div class="gas_station">
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Stations services </span>
         </div>
       <% end %>
     </div>
@@ -414,13 +424,13 @@
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins d'électroménager </span>
           </div>
         <% end %>
-       
+
         <% if @hardware_presence == false && @city.hardware %>
           <div class="additional_hardware">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Drogueries quincailleries </span>
           </div>
         <% end %>
-       
+
         <% if @jewellery_presence == false && @city.jewellery %>
           <div class="additional_jewellery">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Bijouteries </span>
@@ -442,6 +452,12 @@
         <% if @plant_presence == false && @city.plant %>
           <div class="additional_plant">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Fleuristes Jardineries </span>
+          </div>
+        <% end %>
+
+        <% if @gas_station_presence == false && @city.gas_station %>
+          <div class="additional_gas_station">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Stations services </span>
           </div>
         <% end %>
       </div>
