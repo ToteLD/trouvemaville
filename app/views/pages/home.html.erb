@@ -90,7 +90,7 @@
 
               <%= check_box_tag "it", 1, (:checked if params[:it].present?) %>
               <label for="it"><i class="fas fa-blender-phone mr-2"></i>Magasins d'électroménager</label>
-              
+
               <%= check_box_tag "hardware", 1, (:checked if params[:hardware].present?) %>
               <label for="hardware"><i class="fas fa-brush mr-2"></i>Drogueries quincailleries</label>
 
@@ -105,6 +105,10 @@
 
               <%= check_box_tag "plant", 1, (:checked if params[:plant].present?) %>
               <label for="plant"><i class="fas fa-leaf mr-2"></i>Fleuristes Jardineries</label>
+
+              <%= check_box_tag "medical_store", 1, (:checked if params[:medical_store].present?) %>
+              <label for="medical_store"><i class="fas fa-wheelchair mr-2"></i>Matériels médicaux</label>
+
             </div>
       </div>
 

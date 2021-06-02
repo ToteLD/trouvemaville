@@ -91,6 +91,9 @@
       <%= check_box_tag "plant", 1, (:checked if params[:plant].present?) %>
       <label for="plant"><i class="fas fa-leaf mr-2"></i>Fleuristes Jardineries</label>
 
+      <%= check_box_tag "medical_store", 1, (:checked if params[:medical_store].present?) %>
+      <label for="medical_store"><i class="fas fa-wheelchair mr-2"></i>Matériels médicaux</label>
+
     </div>
     <%= submit_tag "Rechercher", class: "btn btn-primary search-button"%>
   <% end %>

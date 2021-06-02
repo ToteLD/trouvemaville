@@ -50,6 +50,7 @@ class CitiesController < ApplicationController
                                                                        cosmetic: params[:cosmetic],\
                                                                        optic: params[:optic],\
                                                                        plant: params[:plant],\
+                                                                       medical_store: params[:medical_store],\
                                                                        age_average: params[:max_age_average],\
                                                                        rating: rating(city) })
       }
@@ -114,6 +115,7 @@ class CitiesController < ApplicationController
     @cosmetic_presence = params[:cosmetic].present? && params[:cosmetic] == "1"
     @optic_presence = params[:optic].present? && params[:optic] == "1"
     @plant_presence = params[:plant].present? && params[:plant] == "1"
+    @medical_store_presence = params[:medical_store].present? && params[:medical_store] == "1"
 
     # city global rating calculation
     @criteria_selected_nb = 0
@@ -143,6 +145,7 @@ class CitiesController < ApplicationController
     @criteria_selected_nb += 1 if @cosmetic_presence
     @criteria_selected_nb += 1 if @optic_presence
     @criteria_selected_nb += 1 if @plant_presence
+    @criteria_selected_nb += 1 if @medical_store_presence
 
     @match_criteria_nb = 0
 
@@ -171,7 +174,8 @@ class CitiesController < ApplicationController
     @match_criteria_nb += 1 if @cosmetic_presence && city.cosmetic
     @match_criteria_nb += 1 if @optic_presence && city.optic
     @match_criteria_nb += 1 if @plant_presence && city.plant
-    
+    @match_criteria_nb += 1 if @medical_store_presence && city.medical_store
+
     if @criteria_selected_nb.positive?
       return ((@match_criteria_nb.to_f / @criteria_selected_nb) * 100).round
     else
