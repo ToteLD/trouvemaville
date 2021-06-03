@@ -52,7 +52,6 @@
         <%= link_to "En savoir plus...", city_wiki_url, target: "_blank" %>
       </div>
     <div class="city_main_filters">
-      <!-- Set commodity criteria color depending on user selection and city match values -->
         <div class="market-price">
           <span class="city_main_filters_titles">Prix du marché ( Maison )</span>
           <% if @city.house_marketprice == 0 %>
@@ -145,11 +144,11 @@
 
       <% if @handiwork_presence && @city.handiwork %>
         <div class="handiwork">
-          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Magasins de bricolage </span>
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Bricolage </span>
         </div>
       <% elsif @handiwork_presence && @city.handiwork == false %>
         <div class="handiwork">
-          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Magasins de bricolage </span>
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Bricolage </span>
         </div>
       <% end %>
 
@@ -195,21 +194,21 @@
 
       <% if @clothe_presence && @city.clothe %>
         <div class="clothe">
-          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Magasins de vêtements </span>
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Vêtements </span>
         </div>
       <% elsif @clothe_presence && @city.clothe == false %>
         <div class="clothe">
-          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Magasins de vêtements </span>
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Vêtements </span>
         </div>
       <% end %>
 
       <% if @shoestore_presence && @city.shoestore %>
         <div class="shoestore">
-          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Magasins de chaussures </span>
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Chaussures </span>
         </div>
       <% elsif @shoestore_presence && @city.shoestore == false %>
         <div class="shoestore">
-          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Magasins de chaussures </span>
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Chaussures </span>
         </div>
       <% end %>
 
@@ -225,34 +224,34 @@
 
       <% if @furniture_presence && @city.furniture %>
         <div class="furniture">
-          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Magasins de meubles </span>
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Meubles </span>
         </div>
       <% elsif @furniture_presence && @city.furniture == false %>
         <div class="furniture">
-          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Magasins de meubles </span>
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Meubles </span>
         </div>
       <% end %>
 
       <% if @sport_presence && @city.sport %>
         <div class="sport">
-          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Magasins de sports </span>
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Articles de sports </span>
         </div>
       <% elsif @sport_presence && @city.sport == false %>
         <div class="sport">
-          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Magasins de sports </span>
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Articles de sports </span>
         </div>
       <% end %>
 
       <% if @it_presence && @city.it %>
         <div class="it">
-          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Magasins d'électroménager </span>
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Electroménagers </span>
         </div>
       <% elsif @it_presence && @city.it == false %>
         <div class="it">
-          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Magasins d'électroménager </span>
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Electroménagers </span>
          </div>
       <% end %>
-      
+
       <% if @hardware_presence && @city.hardware %>
         <div class="hardware">
           <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Drogueries quincailleries </span>
@@ -285,11 +284,11 @@
 
       <% if @optic_presence && @city.optic %>
         <div class="optic">
-          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Magasins d'optiques </span>
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Opticiens </span>
         </div>
       <% elsif @optic_presence && @city.optic == false %>
         <div class="optic">
-          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Magasins d'optiques </span>
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Opticiens </span>
         </div>
       <% end %>
 
@@ -305,7 +304,7 @@
     </div>
 
     <div class="additional_city_filters">
-      <p> Autres atouts présents dans cette ville </p>
+      <p> Autres atouts présents dans cette ville (2019) </p>
       <div class="additionnal_filters">
         <%if @doctor_presence == false && @city.doctor %>
           <div class="additional_doctor">
@@ -351,7 +350,7 @@
 
         <% if @handiwork_presence == false && @city.handiwork %>
           <div class="additional_handiwork">
-            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins de bricolage </span>
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Bricolage </span>
           </div>
         <% end %>
 
@@ -381,13 +380,13 @@
 
         <% if @clothe_presence == false && @city.clothe %>
           <div class="additional_clothe">
-            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins de vêtements </span>
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Vêtements </span>
           </div>
         <% end %>
 
         <% if @shoestore_presence == false && @city.shoestore %>
           <div class="additional_shoestore">
-            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins de chaussures </span>
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Chaussures </span>
           </div>
         <% end %>
 
@@ -399,28 +398,28 @@
 
         <% if @furniture_presence == false && @city.furniture %>
           <div class="additional_furniture">
-            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins de meubles </span>
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Meubles </span>
           </div>
         <% end %>
 
         <% if @sport_presence == false && @city.sport %>
           <div class="additional_sport">
-            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins de sports </span>
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Articles de sports </span>
           </div>
         <% end %>
 
         <% if @it_presence == false && @city.it %>
           <div class="additional_it">
-            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins d'électroménager </span>
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Electroménagers </span>
           </div>
         <% end %>
-       
+
         <% if @hardware_presence == false && @city.hardware %>
           <div class="additional_hardware">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Drogueries quincailleries </span>
           </div>
         <% end %>
-       
+
         <% if @jewellery_presence == false && @city.jewellery %>
           <div class="additional_jewellery">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Bijouteries </span>
@@ -435,7 +434,7 @@
 
         <% if @optic_presence == false && @city.optic %>
           <div class="additional_optic">
-            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Magasins d'optiques </span>
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Opticiens </span>
           </div>
         <% end %>
 
