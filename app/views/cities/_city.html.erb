@@ -301,6 +301,16 @@
           <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Fleuristes Jardineries </span>
         </div>
       <% end %>
+
+      <% if @medical_store_presence && @city.medical_store %>
+        <div class="medical_store">
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Matériels médicaux </span>
+        </div>
+      <% elsif @medical_store_presence && @city.medical_store == false %>
+        <div class="medical_store">
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Matériels médicaux </span>
+        </div>
+      <% end %>
     </div>
 
     <div class="additional_city_filters">
@@ -443,6 +453,13 @@
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Fleuristes Jardineries </span>
           </div>
         <% end %>
+
+        <% if @medical_store_presence == false && @city.medical_store %>
+          <div class="additional_medical_store">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Matériels médicaux </span>
+          </div>
+        <% end %>
+
       </div>
     </div>
 </div>
