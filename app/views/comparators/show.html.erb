@@ -33,22 +33,21 @@
         <p>4G</p>
         <p>Docteurs</p>
         <p>Supermarchés</p>
-        <p>Commerces</p>
-        <p>Magasins de bricolage</p>
+        <p>Bricolage</p>
         <p>Epiceries</p>
         <p>Boucheries</p>
         <p>Boulangeries</p>
         <p>Librairies</p>
-        <p>Magasins de vêtements</p>
-        <p>Magasins de chaussures</p>
+        <p>Vêtements</p>
+        <p>Chaussures</p>
         <p>Poissonneries</p>
-        <p>Magasins de meubles</p>
-        <p>Magasins de sports</p>
-        <p>Magasins d'électroménager</p>
+        <p>Meubles</p>
+        <p>Articles de sports</p>
+        <p>Electroménagers</p>
         <p>Drogueries quincailleries</p>
         <p>Bijouteries</p>
         <p>Parfumeries</p>
-        <p>Magasins d'optiques</p>
+        <p>Opticiens</p>
         <p>Fleuristes Parfumeries</p>
         <p>Matériels médicaux</p>
       </div>
@@ -101,12 +100,6 @@
 
             <% if compared_city.city.supermarket %>
               <p><span style= "color:#0A7C06"><i class="fas fa-check-circle"></i></span></p>
-            <% else %>
-              <p><span class="comparator-underline">—</span></p>
-            <% end %>
-
-            <% if compared_city.city.commodity_count > City::COMMODITY_COUNT_THRESHOLD %>
-              <p><span style= "color:#0A7C06"><%= compared_city.city.commodity_count%></span></p>
             <% else %>
               <p><span class="comparator-underline">—</span></p>
             <% end %>

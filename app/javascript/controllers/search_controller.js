@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = [
     "startCity",
     "supermarket",
-    "commodity",
+    // "commodity",
     "primarySchool",
     "secondarySchool",
     "fibre",
@@ -49,8 +49,6 @@ export default class extends Controller {
     const city = `location[name]=${this.startCityTarget.value}`
 
     const maxDisKm = `location[max_distance_km]=${this.maxDistanceKmTarget.value}`
-
-    const com = this.commodityTarget.checked ? 'commodity=1' : ''
 
     const primary = this.primarySchoolTarget.checked ? 'primary_school=1' : ''
 
@@ -100,11 +98,11 @@ export default class extends Controller {
 
     const max_age_average = this.maxAgeAverageTarget.value === undefined ? '' : `max_age_average=${this.maxAgeAverageTarget.value}`
 
-    const query = `?${city}&${maxDisKm}&${com}&${primary}&${secondary}&${fibre}&${network}\
+    const query = `?${city}&${maxDisKm}&${primary}&${secondary}&${fibre}&${network}\
                    &${doctor}&${handiwork}&${grocery}&${butchery}&${bakery}&${bookstore}\
                    &${shoestore}&${clothe}&${fish_market}&${jewellery}&${cosmetic}&${hardware}&${supermarket}&${max_population}\
-                   &${it}&${plant}&${optic}&${sport}&${furniture}\
-                   &${medical_store}&${max_age_average}`
+                   &${it}&${plant}&${optic}&${sport}&${furniture}&${medical_store}&\
+                   &${max_age_average}`
 
     return query
   }

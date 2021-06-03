@@ -17,7 +17,7 @@
 .city-card {
     display: flex;
     text-align: center;
-    width: 550px;
+    width: 560px;
     background-color: $white;
     border-radius : 10px;
     overflow: hidden;
@@ -113,7 +113,7 @@
 
   // }
 
-   .fa-times {
+  .fa-times {
     color: $white;
     position: absolute;
     top: 20px;
@@ -223,32 +223,31 @@
       text-align: left;
     }
 
-  .city_description {
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
+    .city_description {
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
 
-  }
+    }
 
-  .wiki_link {
-    text-align: initial;
+    .wiki_link {
+      text-align: initial;
 
-    a {
-      color: #6488DD;
+      a {
+        color: #6488DD;
 
-      &:hover {
-        color: #363645;
+        &:hover {
+          color: #363645;
+        }
       }
     }
-  }
 
   }
 
 
-   .city_main_filters {
-
+  .city_main_filters {
     border-bottom: 1px solid $light-blue;
     padding-bottom: 18px;
     width: 100%;

@@ -12,7 +12,6 @@ class FavoritesController < ApplicationController
                                                   supermarket: params[:supermarket].present?,
                                                   network: params[:network].present?,
                                                   fibre: params[:fibre].present?,
-                                                  commodity: params[:commodity].present?,
                                                   doctor: params[:doctor].present?,
                                                   handiwork: params[:handiwork].present?,
                                                   grocery: params[:grocery].present?,
