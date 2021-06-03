@@ -12,7 +12,6 @@ class FavoritesController < ApplicationController
                                                   supermarket: params[:supermarket].present?,
                                                   network: params[:network].present?,
                                                   fibre: params[:fibre].present?,
-                                                  commodity: params[:commodity].present?,
                                                   doctor: params[:doctor].present?,
                                                   handiwork: params[:handiwork].present?,
                                                   grocery: params[:grocery].present?,
@@ -31,6 +30,7 @@ class FavoritesController < ApplicationController
                                                   optic: params[:optic].present?,
                                                   plant: params[:plant].present?,
                                                   gas_station: params[:gas_station].present?,
+                                                  medical_store: params[:medical_store].present?,
                                                   max_distance_km: params[:location][:max_distance_km].to_i,
                                                   age_average: params[:max_age_average].present? ? params[:max_age_average] : nil,
                                                   max_population: params[:max_population].present? ? params[:max_population] : nil)

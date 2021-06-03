@@ -29,7 +29,6 @@ class CitiesController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { city: city, doctor: params[:doctor],\
                                                                        network: params[:network],\
                                                                        fibre: params[:fibre],\
-                                                                       commodity: params[:commodity],\
                                                                        supermarket: params[:supermarket],\
                                                                        primary_school: params[:primary_school],\
                                                                        secondary_school: params[:secondary_school],\
@@ -51,6 +50,7 @@ class CitiesController < ApplicationController
                                                                        optic: params[:optic],\
                                                                        plant: params[:plant],\
                                                                        gas_station: params[:gas_station],\
+                                                                       medical_store: params[:medical_store],\
                                                                        age_average: params[:max_age_average],\
                                                                        rating: rating(city) })
       }
@@ -93,7 +93,6 @@ class CitiesController < ApplicationController
     @doctor_presence = params[:doctor].present? && params[:doctor] == "1"
     @network_presence = params[:network].present? && params[:network] == "1"
     @fibre_presence = params[:fibre].present? && params[:fibre] == "1"
-    @commodity_presence = params[:commodity].present? && params[:commodity] == "1"
     @supermarket_presence = params[:supermarket].present? && params[:supermarket] == "1"
     @primary_school_presence = params[:primary_school].present? && params[:primary_school] == "1"
     @secondary_school_presence = params[:secondary_school].present? && params[:secondary_school] == "1"
@@ -116,14 +115,13 @@ class CitiesController < ApplicationController
     @optic_presence = params[:optic].present? && params[:optic] == "1"
     @plant_presence = params[:plant].present? && params[:plant] == "1"
     @gas_station_presence = params[:gas_station].present? && params[:gas_station] == "1"
-
+    @medical_store_presence = params[:medical_store].present? && params[:medical_store] == "1"
     # city global rating calculation
     @criteria_selected_nb = 0
 
     @criteria_selected_nb += 1 if @doctor_presence
     @criteria_selected_nb += 1 if @network_presence
     @criteria_selected_nb += 1 if @fibre_presence
-    @criteria_selected_nb += 1 if @commodity_presence
     @criteria_selected_nb += 1 if @supermarket_presence
     @criteria_selected_nb += 1 if @primary_school_presence
     @criteria_selected_nb += 1 if @secondary_school_presence
@@ -146,13 +144,13 @@ class CitiesController < ApplicationController
     @criteria_selected_nb += 1 if @optic_presence
     @criteria_selected_nb += 1 if @plant_presence
     @criteria_selected_nb += 1 if @gas_station_presence
+    @criteria_selected_nb += 1 if @medical_store_presence
 
     @match_criteria_nb = 0
 
     @match_criteria_nb += 1 if @doctor_presence && city.doctor
     @match_criteria_nb += 1 if @network_presence && city.network.to_f >= 70
     @match_criteria_nb += 1 if @fibre_presence && city.fibre.to_f >= 70
-    @match_criteria_nb += 1 if @commodity_presence && city.commodity_count.positive?
     @match_criteria_nb += 1 if @supermarket_presence && city.supermarket
     @match_criteria_nb += 1 if @primary_school_presence && city.primary_school
     @match_criteria_nb += 1 if @secondary_school_presence && city.secondary_school
@@ -175,6 +173,7 @@ class CitiesController < ApplicationController
     @match_criteria_nb += 1 if @optic_presence && city.optic
     @match_criteria_nb += 1 if @plant_presence && city.plant
     @match_criteria_nb += 1 if @gas_station_presence && city.gas_station
+    @match_criteria_nb += 1 if @medical_store_presence && city.medical_store
 
     if @criteria_selected_nb.positive?
       return ((@match_criteria_nb.to_f / @criteria_selected_nb) * 100).round
