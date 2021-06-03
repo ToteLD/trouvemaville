@@ -1,5 +1,5 @@
 const indexShow = () => {
-  const navbar = document.querySelector(".navbar-lewagon")
+  const navbar = document.querySelector(".navbar-lewagon");
   const indexSearchBar = document.getElementById('index-search-bar');
   if(indexSearchBar) {
 
