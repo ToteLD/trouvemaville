@@ -1,25 +1,31 @@
 <div class="index-search-bar" id="index-search-bar">
   <div class="search-input">
   <%= form_tag cities_path, method: :get do %>
+
+
+  <div class="location-criteria">
     <%= text_field_tag "location[name]", @city, required: true, placeholder: "Rechercher une ville bretonne" %>
     <div class="search-bar-main-criterias">
-      <div>
-      A
-      <%= number_field_tag "location[max_distance_km]", @max_distance_km, min: 1, width: 1 %>
-      km
-      </div>
+              <div>
+              A
+              <%= number_field_tag "location[max_distance_km]", @max_distance_km, min: 1, width: 1 %>
+              km
+              </div>
 
-      <div>
-      <%= number_field_tag "max_population", @max_population, min: 1, width: 1 %>
-      habitants maximum
-      </div>
+              <div>
+              <%= number_field_tag "max_population", @max_population, min: 1, width: 1 %>
+              habitants maximum
+              </div>
 
-      <div>
-      <%= number_field_tag "max_age_average", @max_age_average, min: 18, width: 1 %>
-      d'âge moyen maximum
-      </div>
+              <div>
+              <%= number_field_tag "max_age_average", @max_age_average, min: 18, width: 1 %>
+              d'âge moyen maximum
+              </div>
+            </div>
     </div>
-    </div>
+
+  </div>
+  <div class="checkboxes-and-button">
     <div class="checkboxes">
 
       <%= check_box_tag "primary_school",1, (:checked if params[:primary_school].present?) %>
@@ -94,7 +100,11 @@
       <%= check_box_tag "medical_store", 1, (:checked if params[:medical_store].present?) %>
       <label for="medical_store"><i class="fas fa-wheelchair mr-2"></i>Matériels médicaux</label>
     </div>
+    <div class="button">
     <%= submit_tag "Rechercher", class: "btn btn-primary search-button"%>
+    </div>
+  </div>
+
   <% end %>
 </div>
 
