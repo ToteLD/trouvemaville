@@ -135,68 +135,66 @@ end
 
 
 
-p "Commodities seeds incoming"
-# Ouvrir le fichier commerces.csv
-csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
-filepath    = 'db/fixtures/commerces.csv'
+# p "Commodities seeds incoming"
+# # Ouvrir le fichier commerces.csv
+# csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
+# filepath    = 'db/fixtures/commerces.csv'
 
-# Pour chaque ligne du fichier
-CSV.foreach(filepath, csv_options) do |row|
-  # je prends le geocode
-  geocode = row['geocode']
-  department_code = [22, 29, 35, 56]
-  # # je regarde s'il commence par 22, 29, 35, 56
+# # Pour chaque ligne du fichier
+# CSV.foreach(filepath, csv_options) do |row|
+#   # je prends le geocode
+#   geocode = row['geocode']
+#   department_code = [22, 29, 35, 56]
+#   # # je regarde s'il commence par 22, 29, 35, 56
 
-  next unless (department_code.include?(geocode[0..1].to_i) && @geocode_population.include?(geocode))
+#   next unless (department_code.include?(geocode[0..1].to_i) && @geocode_population.include?(geocode))
 
-  # Je retrouve la ville en DB avec le meme nom
-  # Si il n'y en a pas, je crée une nouvelle ville avec ce nom
-  city = City.find_or_initialize_by(geocode: geocode)
+#   # Je retrouve la ville en DB avec le meme nom
+#   # Si il n'y en a pas, je crée une nouvelle ville avec ce nom
+#   city = City.find_or_initialize_by(geocode: geocode)
 
-#   # je compte le nombre de commerces
-#   commodity_count = 0
-#   supermarket = false
+# #   # je compte le nombre de commerces
+# #   commodity_count = 0
+# #   supermarket = false
 
-#   commodity_count = row['handiwork'].to_i + row['grocery'].to_i + row['bakery'].to_i\
-#                     + row['butchery'].to_i + row['frozen'].to_i + row['fish_market'].to_i\
-#                     + row['bookstore'].to_i + row['clothe'].to_i + row['appliance'].to_i\
-#                     + row['shoestore'].to_i + row['it'].to_i + row['furniture'].to_i\
-#                     + row['sport'].to_i + row['house'].to_i + row['hardware'].to_i\
-#                     + row['cosmetic'].to_i + row['jewellery'].to_i + row['plant'].to_i\
-#                     + row['optic'].to_i + row['medical_store'].to_i
+# #   commodity_count = row['handiwork'].to_i + row['grocery'].to_i + row['bakery'].to_i\
+# #                     + row['butchery'].to_i + row['frozen'].to_i + row['fish_market'].to_i\
+# #                     + row['bookstore'].to_i + row['clothe'].to_i + row['appliance'].to_i\
+# #                     + row['shoestore'].to_i + row['it'].to_i + row['furniture'].to_i\
+# #                     + row['sport'].to_i + row['house'].to_i + row['hardware'].to_i\
+# #                     + row['cosmetic'].to_i + row['jewellery'].to_i + row['plant'].to_i\
+# #                     + row['optic'].to_i + row['medical_store'].to_i
 
 
-  supermarket_count = row['supermarket'].to_i + row['hypermarket'].to_i + row['store'].to_i
-  supermarket = (true if supermarket_count > 0) || false
-  grocery = (true if row['grocery'].to_i > 0) || false
-  handiwork = (true if row['handiwork'].to_i > 0) || false
-  bakery = (true if row['bakery'].to_i > 0) || false
-  butchery = (true if row['butchery'].to_i > 0) || false
-  fish_market = (true if row['fish_market'].to_i > 0) || false
-  bookstore = (true if row['bookstore'].to_i > 0) || false
-  clothe = (true if row['clothe'].to_i > 0) || false
-  shoestore = (true if row['shoestore'].to_i > 0) || false
-  it = (true if row['it'].to_i > 0) || false
-  furniture = (true if row['furniture'].to_i > 0) || false
-  sport = (true if row['sport'].to_i > 0) || false
-  hardware = (true if row['hardware'].to_i > 0) || false
-  cosmetic = (true if row['cosmetic'].to_i > 0) || false
-  jewellery = (true if row['jewellery'].to_i > 0) || false
-  plant = (true if row['plant'].to_i > 0) || false
-  optic = (true if row['optic'].to_i > 0) || false
-  medical_store = (true if row['medical_store'].to_i > 0) || false
-  gas_station = (true if row['gas_station'].to_i > 0) || false
+#   supermarket_count = row['supermarket'].to_i + row['hypermarket'].to_i + row['store'].to_i
+#   supermarket = (true if supermarket_count > 0) || false
+#   grocery = (true if row['grocery'].to_i > 0) || false
+#   handiwork = (true if row['handiwork'].to_i > 0) || false
+#   bakery = (true if row['bakery'].to_i > 0) || false
+#   butchery = (true if row['butchery'].to_i > 0) || false
+#   fish_market = (true if row['fish_market'].to_i > 0) || false
+#   bookstore = (true if row['bookstore'].to_i > 0) || false
+#   clothe = (true if row['clothe'].to_i > 0) || false
+#   shoestore = (true if row['shoestore'].to_i > 0) || false
+#   it = (true if row['it'].to_i > 0) || false
+#   furniture = (true if row['furniture'].to_i > 0) || false
+#   sport = (true if row['sport'].to_i > 0) || false
+#   hardware = (true if row['hardware'].to_i > 0) || false
+#   cosmetic = (true if row['cosmetic'].to_i > 0) || false
+#   jewellery = (true if row['jewellery'].to_i > 0) || false
+#   plant = (true if row['plant'].to_i > 0) || false
+#   optic = (true if row['optic'].to_i > 0) || false
+#   medical_store = (true if row['medical_store'].to_i > 0) || false
+#   gas_station = (true if row['gas_station'].to_i > 0) || false
 
-  city.update(name: row['city_name'], grocery: grocery, supermarket: supermarket, handiwork: handiwork,
-              bakery: bakery, butchery: butchery, fish_market: fish_market, bookstore: bookstore, clothe: clothe,
-              shoestore: shoestore, it: it, furniture: furniture, sport: sport, hardware: hardware,
-              cosmetic: cosmetic, jewellery: jewellery, plant: plant, optic: optic, medical_store: medical_store,
-              gas_station: gas_station )
-#   # je sauve
-  city.save!
-end
-#   # je mets à jour ma ville en db avec la population du csv
-
+#   city.update(name: row['city_name'], grocery: grocery, supermarket: supermarket, handiwork: handiwork,
+#               bakery: bakery, butchery: butchery, fish_market: fish_market, bookstore: bookstore, clothe: clothe,
+#               shoestore: shoestore, it: it, furniture: furniture, sport: sport, hardware: hardware,
+#               cosmetic: cosmetic, jewellery: jewellery, plant: plant, optic: optic, medical_store: medical_store,
+#               gas_station: gas_station )
+# #   # je sauve
+#   city.save!
+# end
 
 
 
@@ -229,6 +227,7 @@ end
 #   city.save!
 # end
 
+
 # p "Description and photos seeds incoming"
 # cities = City.all
 # cities.each do |city|
@@ -253,223 +252,80 @@ end
 # end
 
 
-# prices market seeds
-# def average_per_department
-#   # calcul de la moyenne par departement
-#   cities_grouped_array = @sold_objects.group_by {|dpt| dpt["city_department"]}.values
 
-#   cities_grouped_array.each do |city_array_of_hashes|
+# Attention ! Certaines communes existent dans plusieurs departements, il faut absolument le code geo dans le fichier des valeurs foncieres
+# Ex pb: la ville "La fontenelle" du fichier des prix des m2 moyens n'est pas trouvée dans le fichier population.csv alors qu'elle y est dans le département 41
 
-#     m2_price = 0
-#     m2_price_sum = 0
-#     @department_m2_price = 0
-#     to_ignore = 0
+puts "Prices market seeds incoming..."
+#downcase all cities names in db
+@cities = City.all
+@cities_count = 0
 
-#     city_array_of_hashes.each do |city_hash|
-#         @dpt = city_hash["city_department"]
-#         # p "Dpt : #{@dpt}"
+@cities.each do | city |
+  city.name.downcase.tr("ÀÁÂÃÄÅàáâãäåĀāĂăĄąÇçĆćĈĉĊċČčÐðĎďĐđÈÉÊËèéêëĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħÌÍÎÏìíîïĨĩĪīĬĭĮįİıĴĵĶķĸĹĺĻļĽľĿŀŁłÑñŃńŅņŇňŉŊŋÒÓÔÕÖØòóôõöøŌōŎŏŐőŔŕŖŗŘřŚśŜŝŞşŠšſŢţŤťŦŧÙÚÛÜùúûüŨũŪūŬŭŮůŰűŲųŴŵÝýÿŶŷŸŹźŻżŽž","AAAAAAaaaaaaAaAaAaCcCcCcCcCcDdDdDdEEEEeeeeEeEeEeEeEeGgGgGgGgHhHhIIIIiiiiIiIiIiIiIiJjKkkLlLlLlLlLlNnNnNnNnnNnOOOOOOooooooOoOoOoRrRrRrSsSsSsSssTtTtTtUUUUuuuuUuUuUuUuUuUuWwYyyYyYZzZzZz")
+  @cities_count += 1
+end
 
-#         # je prends la valeur price
-#         price = city_hash["price"]
-#         # p "prix : #{price}"
-#         # je prends la valeur surface
-#         surface = city_hash["surface"]
-#         # p "Surface : #{surface}"
+@cities.each do | city |
+  city.house_marketprice = 0
+  city.save!
+end
 
-#         # Je calcul le prix du m2
-#         if (!surface.nil? && surface.to_f != 0)
-#           if (!price.nil? && price.to_i >= 10000 && price.to_i < 1500000)
-#             m2_price = (price.to_f / surface.to_i).round
-#           else
-#             m2_price = 0
-#             to_ignore += 1
-#           end
-#           # p "prix m2: #{m2_price}"
-#         else
-#           m2_price = 0
-#           to_ignore += 1
-#         end
-#         # j'ajoute à une somme
-#         m2_price_sum += m2_price
-#     end
-
-#     # je divise la somme par le nb de hash
-#     if city_array_of_hashes.count != 0
-#       @department_m2_price = (m2_price_sum / (city_array_of_hashes.count - to_ignore)).round
-#     else
-#       @department_m2_price = 0
-#     end
-#     p "Market price in #{@dpt} dpt: #{@department_m2_price}€/m2"
-#   end
-# end
+cities_at_zero = City.where("house_marketprice": 0).count
+puts "cities house_marketprice = 0 : #{cities_at_zero}"
 
 
-# def average_per_city
-#   # calcul de la moyenne par ville
-#   cities_grouped_array = @sold_objects.group_by {|city| city["city_name"]}.values
-#   cities_grouped_array.each do |city_array_of_hashes|
+file_path = 'db/fixtures/average_cities_market_prices.csv'
+csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 
-#     m2_price = 0
-#     m2_price_sum = 0
-#     @city_m2_price = 0
-#     to_ignore = 0
+@count = 0
 
-#     city_array_of_hashes.each do |city_hash|
-#         @city = city_hash["city_name"]
+CSV.foreach(file_path, csv_options) do |row|
+  city = row['city']
+  city_m2_price = row['average market price']
+  sell_type = row['type of sell']
 
-#         #je prends la valeur price
-#         price = city_hash["price"]
-#         #je prends la valeur surface
-#         surface = city_hash["surface"]
-#         #je prends le type de bien vendu
-#         @sell_type = city_hash["sell_type"]
-#         #Je calcul le prix du m2
+  if sell_type == "Maison"
 
-#         if (surface.present? && surface.to_f != 0)
-#           if (price.present? && price.to_i >= 10000 && price.to_i < 1500000)
-#             m2_price = (price.to_f / surface.to_i).round
-#           else
-#             m2_price = 0
-#             to_ignore += 1
-#           end
-#           # p "prix m2: #{m2_price}"
-#         else
-#           m2_price = 0
-#           to_ignore += 1
-#         end
-#         # j'ajoute à une somme
-#         m2_price_sum += m2_price
-#     end
+    #Remove accents from city name
+    city_name_normalized =  city.downcase.tr("ÀÁÂÃÄÅàáâãäåĀāĂăĄąÇçĆćĈĉĊċČčÐðĎďĐđÈÉÊËèéêëĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħÌÍÎÏìíîïĨĩĪīĬĭĮįİıĴĵĶķĸĹĺĻļĽľĿŀŁłÑñŃńŅņŇňŉŊŋÒÓÔÕÖØòóôõöøŌōŎŏŐőŔŕŖŗŘřŚśŜŝŞşŠšſŢţŤťŦŧÙÚÛÜùúûüŨũŪūŬŭŮůŰűŲųŴŵÝýÿŶŷŸŹźŻżŽž","AAAAAAaaaaaaAaAaAaCcCcCcCcCcDdDdDdEEEEeeeeEeEeEeEeEeGgGgGgGgHhHhIIIIiiiiIiIiIiIiIiJjKkkLlLlLlLlLlNnNnNnNnnNnOOOOOOooooooOoOoOoRrRrRrSsSsSsSssTtTtTtUUUUuuuuUuUuUuUuUuUuWwYyyYyYZzZzZz")
+    city_to_update = City.where("name ILIKE ?", city_name_normalized).first
 
-#     #je divise la somme par le nb de hash
-#     if (city_array_of_hashes.count >= 1 && m2_price_sum != 0)
-#       @city_m2_price = (m2_price_sum / (city_array_of_hashes.count - to_ignore)).round
-#     else
-#       @city_m2_price = @department_m2_price
-#     end
-#     p "#{@sell_type} market price in #{@city} city: #{@city_m2_price}€/m2"
+    if city_to_update
+      # p "city to update : #{city_to_update.name}"
+      # p "prix m2: #{city_m2_price}"
 
+      city_to_update.house_marketprice = city_m2_price.to_i
+      city_to_update.save!
+      # p "#{city_to_update.name} updated"
+      @count += 1
+    else
+      puts "City not found in population file: #{city}"
+    end
+  end
+end
 
-    # @city == city_name
-    # @city_m2_price == average price
+puts "cities updated nb : #{@count}"
 
-    # downcase all cities names in db
-    # cities = City.all
-    # cities.each do | city |
-    #   city.name.downcase
-    # end
+cities_non_updated = City.where("house_marketprice": 0).count
+puts "cities non updated nb : #{cities_non_updated}"
 
-    # if @sell_type == "Maison"
-    #   @city_to_update = City.where("name ILIKE ?", @city.downcase).first
+puts "Nb de villes total : #{@cities_count}"
 
-    #   p "city to update : #{@city_to_update}"
-    #   p "prix m2: #{@city_m2_price}"
+  # elsif sell_type == "Appartement"
+  #   @city_to_update = City.where("name" => @city.capitalize)
+  #   @city_to_update.update(flat_marketprice: @city_m2_price)
+  #   @city_to_update.save!
 
-    #   if @city_to_update
-    #     @city_to_update.house_marketprice = @city_m2_price
-    #     @city_to_update.save!
-    #     p "#{@city_to_update} updated"
-    #   end
-
-    # elsif sell_type == "Appartement"
-    #   @city_to_update = City.where("name" => @city.capitalize)
-    #   @city_to_update.update(flat_marketprice: @city_m2_price)
-    #   @city_to_update.save!
-
-    # elsif sell_type == "Vente terrain a batir"
-    #   @city_to_update = City.where("name" => @city.capitalize)
-    #   @city_to_update.update(land_marketprice: @city_m2_price)
-    #   @city_to_update.save!
+  # elsif sell_type == "Vente terrain a batir"
+  #   @city_to_update = City.where("name" => @city.capitalize)
+  #   @city_to_update.update(land_marketprice: @city_m2_price)
+  #   @city_to_update.save!
 
 
-    # Balayer les villes des seeds "population" qui n'ont pas été vues par la seed des prices market
-    # et mettre le prix du departement
 
-#     end
-#   end
-# end
-
-
-# p "Price market seeds incoming"
-# csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
-# filepath    = 'db/fixtures/valeurs_foncieres_Bretagne_2020.csv'
-
-# # cities =[]
-
-# @cities_houses = []
-# @cities_apartments = []
-# @cities_lands = []
-
-# CSV.foreach(filepath, csv_options) do |row|
-#   file_dpt_code = row['Code departement']
-#   file_city_name = row['Commune']
-
-#   department_code = [22, 29, 35, 56]
-#   if (department_code.include?(file_dpt_code.to_i) && @city_name_population.include?(file_city_name))
-#     if row["No_disposition"] == "1"
-
-      # construction de l'array de hashs pour les apartements
-      # if row['Type_local'] == "Appartement"
-      #   if row['Nature_mutation'] == "Vente" || row['Nature_mutation'] == "Vente en l'etat futur d'achevement"
-      #       apartment = Hash.new
-      #       apartment["city_department"] = file_dpt_code
-      #       apartment["city_name"] = file_city_name
-      #       apartment["surface"] = row['Surface_reelle_bati']
-      #       apartment["price"] = row['Valeur_fonciere']
-      #       apartment["sell_type"] = row['Type_local']
-      #       @cities_apartments << apartment
-      #   end
-      # end
-
-      # construction de l'array de hashs pour les maisons
-      # if row["Type_local"] == "Maison"
-      #   if row["Nature_mutation"] == "Vente" || row["Nature_mutation"] == "Vente en l'etat futur d'achevement"
-      #       house = Hash.new
-      #       house["city_department"] = file_dpt_code
-      #       house["city_name"] = file_city_name
-      #       house["surface"] = row['Surface_reelle_bati']
-      #       house["price"] = row['Valeur_fonciere']
-      #       house["sell_type"] = row['Type_local']
-      #       @cities_houses << house
-      #   end
-      # end
-
-      # construction de l'array de hashs pour les terrains
-      # @type_of_nature_mutation = row['Nature_mutation']
-      # if row['Nature_mutation'] == "Vente terrain a batir"
-      #     if row['Nature culture'] = "AB"
-      #       land = Hash.new
-      #       land["city_department"] = file_dpt_code
-      #       land["city_name"] = file_city_name
-      #       land["surface"] = row['Surface_terrain']
-      #       land["price"] = row['Valeur_fonciere']
-      #       land["sell_type"] = row['Nature_mutation']
-      #       @cities_lands << land
-      #     end
-      # end
-#     end
-#   end
-# end
-
-# @sold_objects = @cities_houses
-# p "      Houses market price per department calculation..."
-# average_per_department
-# p "      Houses market price per city calculation..."
-# average_per_city
-
-# @sold_objects = @cities_apartments
-# p "      Apartments market price per department calculation..."
-# average_per_department
-# p "      Apartments market price per city calculation..."
-# average_per_city
-
-# @sold_objects = @cities_lands
-# p "      Lands market price per department calculation..."
-# average_per_department
-# p "      Lands market price per city calculation..."
-# average_per_city
-
-
+  # Balayer les villes des seeds "population" qui n'ont pas été vues par la seed des prices market
+  # et mettre le prix du departement
 
 
 
