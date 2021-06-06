@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_26_142111) do
+ActiveRecord::Schema.define(version: 2021_06_06_183126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_142111) do
     t.boolean "optic", default: false
     t.boolean "medical_store", default: false
     t.boolean "gas_station", default: false
+    t.boolean "train_station", default: false
   end
 
   create_table "comparators", force: :cascade do |t|
@@ -141,6 +142,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_142111) do
     t.boolean "optic", default: false
     t.boolean "medical_store", default: false
     t.boolean "gas_station", default: false
+    t.boolean "trainstation", default: false
   end
 
   create_table "users", force: :cascade do |t|

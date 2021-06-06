@@ -28,6 +28,7 @@ export default class extends Controller {
     "plant",
     "gas_station",
     "medical_store",
+    "train_station",
     "maxDistanceKm",
     "maxPopulation",
     "maxAgeAverage",
@@ -94,8 +95,10 @@ export default class extends Controller {
     const plant = this.plantTarget.checked ? 'plant=1' : ''
 
     const gas_station = this.gas_stationTarget.checked ? 'gas_station=1' : ''
-    
+
     const medical_store = this.medical_storeTarget.checked ? 'medical_store=1' : ''
+
+    const train_station = this.train_stationTarget.checked ? 'train_station=1' : ''
 
     const max_population = this.maxPopulationTarget.value === undefined ? '' : `max_population=${this.maxPopulationTarget.value}`
 
@@ -104,7 +107,7 @@ export default class extends Controller {
     const query = `?${city}&${maxDisKm}&${primary}&${secondary}&${fibre}&${network}\
                    &${doctor}&${handiwork}&${grocery}&${butchery}&${bakery}&${bookstore}\
                    &${shoestore}&${clothe}&${fish_market}&${jewellery}&${cosmetic}&${hardware}&${supermarket}&${max_population}\
-                   &${it}&${plant}&${optic}&${sport}&${furniture}&${gas_station}&${medical_store}\
+                   &${it}&${plant}&${optic}&${sport}&${furniture}&${gas_station}&${medical_store}&${train_station}\
                    &${max_age_average}`
 
     return query

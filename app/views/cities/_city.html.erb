@@ -70,6 +70,17 @@
     <!-- see cities controller for following thresholds variables -->
     <!-- Set doctor criteria color depending on user selection and city match values -->
     <div class="city_filters">
+
+      <% if @train_station_presence && @city.train_station %>
+        <div class="train_station">
+          <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Gare SNCF </span>
+        </div>
+      <% elsif @train_station_presence && @city.train_station == false %>
+        <div class="train_station">
+          <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Gare SNCF </span>
+        </div>
+      <% end %>
+
       <% if @doctor_presence && @city.doctor %>
         <div class="doctor">
           <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Docteurs </span>
@@ -311,7 +322,7 @@
           <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Stations services </span>
         </div>
       <% end %>
-      
+
       <% if @medical_store_presence && @city.medical_store %>
         <div class="medical_store">
           <span style= "color:#0A7C06"><i class="fas fa-check-circle"></i> Matériels médicaux </span>
@@ -321,11 +332,19 @@
           <span style= "color:#D94111"><i class="fas fa-times-circle"></i> Matériels médicaux </span>
         </div>
       <% end %>
+
     </div>
 
     <div class="additional_city_filters">
       <p> Autres atouts présents dans cette ville (2019) </p>
       <div class="additionnal_filters">
+
+        <% if @train_station_presence == false && @city.train_station %>
+          <div class="additional_train_station">
+            <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Gare SNCF </span>
+          </div>
+        <% end %>
+
         <%if @doctor_presence == false && @city.doctor %>
           <div class="additional_doctor">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Docteurs </span>
@@ -469,7 +488,7 @@
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Stations services </span>
           </div>
         <% end %>
-        
+
         <% if @medical_store_presence == false && @city.medical_store %>
           <div class="additional_medical_store">
             <span style= "color:#7C94CB"><i class="fas fa-plus-circle"></i> Matériels médicaux </span>

@@ -44,6 +44,47 @@ CSV.foreach(filepath, csv_options) do |row|
 end
 
 
+puts "Train stations seeds incoming..."
+
+filepath = 'db/fixtures/referentiel_gares-voyageurs.json'
+serialized_train_stations = File.read(filepath)
+train_stations = JSON.parse(serialized_train_stations)
+
+cities = City.all
+
+cities.each do |city|
+  geocode = city.geocode
+  city = city.name
+  train_station = false
+
+  if
+    department = train_stations["fields"]["departement_numero"]
+
+
+
+
+city_to_update = City.find_by("geocode": geocode)
+if city_to_update
+  city.update("train_station": true)
+  city.save!
+  puts "#{city} updated"
+end
+
+
+
+end
+
+
+
+  # department_codes = [22, 29, 35, 56]
+  # next unless department_code.include?(geocode[0..1].to_i) && @geocode_population.include?(geocode)
+
+
+end
+
+
+
+
 # p "Latitude & Longitude seeds incoming"
 # csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 # filepath = 'db/fixtures/communes-coords-gps.csv'
