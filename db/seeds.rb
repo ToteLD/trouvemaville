@@ -6,7 +6,7 @@ require 'open-uri'
 # City.destroy_all
 # User.destroy_all
 
-puts "Population seeds incoming..."
+=beginputs "Population seeds incoming..."
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 filepath    = 'db/fixtures/population.csv'
 
@@ -220,7 +220,7 @@ CSV.foreach(filepath, csv_options) do |row|
   city.save!
 end
 
-
+=end
 # puts "Description and photos seeds incoming..."
 # cities = City.all
 # cities.each do |city|
