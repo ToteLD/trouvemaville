@@ -13,7 +13,6 @@ require 'open-uri'
 #  city.save
 # end
 
-
 puts "Population seeds incoming..."
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 filepath    = 'db/fixtures/population.csv'
@@ -47,11 +46,11 @@ end
 
 puts "Train stations seeds incoming..."
 ## Nota1: These seeds are based on .json file from SNCF train french company.
-## The files contains only train stations accessible by TRAINS for TRAVELERS.
-## Train stations desserted by "TER-buses" or trains carrying only goods are not in the files and will not be in the db
+## The file contains only train stations accessible by TRAINS for TRAVELERS.
+## Train stations served by "TER-buses" or trains carrying only goods, are not in the files and will not be in the db
 
 ## Nota2: Some big cities have more than one train station in the .json file --> i.e Toulouse city.
-## --> The db will be updated as soon as one train station is found
+## --> The train_station criteria will be set as "true" as soon as one train station is found in the .json file
 
 filepath = 'db/fixtures/referentiel-gares-voyageurs.json'
 serialized_train_stations = File.read(filepath)
@@ -87,7 +86,6 @@ train_stations.each do |train_station|
     @updated += 1
   end
 end
-
 ##detect haw many cities have more than one train station
 # double_values = 0
 # @geocodes.each do |geocode|
@@ -95,7 +93,6 @@ end
 # end
 ## puts "#{@updated} db updates"
 ## puts "#{double_values} cities with more than 1 station"
-
 
 
 
@@ -110,7 +107,6 @@ CSV.foreach(filepath, csv_options) do |row|
   city.update(name: row['city_name'], latitude: row['latitude'], longitude: row['longitude'])
   city.save!
 end
-
 
 
 puts "Network seeds incoming..."
@@ -250,8 +246,6 @@ CSV.foreach(filepath, csv_options) do |row|
 #   # je sauve
   city.save!
 end
-#   # je mets à jour ma ville en db avec la population du csv
-
 
 
 
@@ -261,7 +255,7 @@ filepath    = 'db/fixtures/ecoles.csv'
 
 # Pour chaque ligne du fichier
 CSV.foreach(filepath, csv_options) do |row|
-
+  
   geocode = row['geocode']
   department_code = [22, 29, 35, 56]
   next unless (department_code.include?(geocode[0..1].to_i) && @geocode_population.include?(geocode))
@@ -285,9 +279,7 @@ CSV.foreach(filepath, csv_options) do |row|
 end
 
 
-
-
-# p "Description and photos seeds incoming"
+# puts "Description and photos seeds incoming..."
 # cities = City.all
 # cities.each do |city|
 # # p city.population
@@ -309,3 +301,100 @@ end
 #   city.save!
 
 # end
+
+
+puts "Prices market seeds incoming..."
+##puts "      Reseting database market prices..."
+
+updated = 0
+not_updated = 0
+houses_updated = 0
+flats_updated = 0
+lands_updated = 0
+
+##reinitialize all cities prices market in db
+#cities = City.all
+#cities.each do | city |
+  #city.house_marketprice = 0
+  #city.flat_marketprice = 0
+  #city.land_marketprice = 0
+  #city.save!
+#end
+
+puts "      Updating database market prices from 'db/fixtures/average_cities_market_prices.csv'..."
+
+# puts "City database : #{City.all.count} cities"
+
+csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
+
+CSV.foreach('db/fixtures/average_cities_market_prices.csv', csv_options) do |row|
+
+  city = row['city']
+  city_geocode = row['geocode']
+  type_of_sell = row['type of sell']
+  city_m2_price = row['average market price']
+
+  city_to_update = City.find_by("geocode": city_geocode)
+
+  if city_to_update
+    # puts "city to update : #{city_to_update.name}"
+    # puts "prix m2: #{city_m2_price}"
+
+    if type_of_sell == "Maison"
+      city_to_update.house_marketprice = city_m2_price.to_i
+      city_to_update.save!
+      houses_updated += 1
+      updated += 1
+    # elsif type_of_sell == "Appartement"
+    #   city_to_update.flat_marketprice = city_m2_price.to_i
+    #   city_to_update.save!
+    #   flats_updated += 1
+    #   updated += 1
+    # elsif type_of_sell == "Vente terrain à bâtir"
+    #   city_to_update.land_marketprice = city_m2_price.to_i
+    #   city_to_update.save!
+    #   lands_updated += 1
+    #   updated += 1
+    end
+
+    # puts "#{city_to_update.name} updated"
+
+  else
+    # puts "#{city} geocode #{city_geocode} not found in db ********************************"
+    not_updated += 1
+  end
+end
+
+puts "      Prices market seeds completed..."
+
+# puts""
+# puts "Updated : #{updated}"
+# puts "Non updated : #{not_updated}"
+# puts ""
+# puts "House updated : #{houses_updated}"
+# puts "Flats updated : #{flats_updated}"
+# puts "Lands updated : #{lands_updated}"
+# puts ""
+
+
+## if the nb of cities updated is less than the nb of cities in the database coming from population.csv,
+## it's because either there has not been any real estate transaction (houses, apartments or lands) in valeursfoncieres-20XX.txt files
+## or some new geocodes have been created recently by government for new cities (after the valeursfoncieres-20XX.txt edit)
+
+houses_delta = City.all.count - houses_updated
+# flats_delta = City.all.count - flats_updated
+# lands_delta = City.all.count - lands_updated
+
+if (houses_delta > 0 || flats_delta > 0 || lands_delta > 0)
+  if houses_delta > 0
+    puts "      #{houses_delta} houses market price have not been updated"
+  end
+  # if flats_delta > 0
+  #   puts "#{flats_delta} flats market price have not been updated"
+  # end
+  # if lands_delta > 0
+  #   puts "#{lands_delta} lands market price have not been updated"
+  # end
+  puts "      --> Either there has not been any real estate transaction or some new geocodes have emerged recently"
+end
+
