@@ -1,4 +1,4 @@
-import { Controller } from "stimulus";
+import { Controller } from "stimulus"
 
 export default class extends Controller {
   static targets = [
@@ -107,8 +107,8 @@ export default class extends Controller {
     const query = `?${city}&${maxDisKm}&${primary}&${secondary}&${fibre}&${network}\
                    &${doctor}&${handiwork}&${grocery}&${butchery}&${bakery}&${bookstore}\
                    &${shoestore}&${clothe}&${fish_market}&${jewellery}&${cosmetic}&${hardware}&${supermarket}&${max_population}\
-                   &${it}&${plant}&${optic}&${sport}&${furniture}&${gas_station}&${medical_store}&${train_station}\
-                   &${max_age_average}`
+                   &${it}&${plant}&${optic}&${sport}&${furniture}&${gas_station}&${medical_store}\
+                   &${train_station}&${max_age_average}` // add next criteria here
 
     return query
   }

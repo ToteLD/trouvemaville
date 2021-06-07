@@ -29,7 +29,7 @@
     <div class="checkboxes">
 
       <%= check_box_tag "train_station", 1, (:checked if params[:train_station].present?) %>
-      <label for="train_station"><i class="fas fa-train mr-2"></i>Gare SNCF</label>
+      <label for="train_station"><i class="fas fa-train mr-2"></i>Gare SNCF voyageurs</label>
 
       <%= check_box_tag "primary_school",1, (:checked if params[:primary_school].present?) %>
       <label for="primary_school"><i class="fas fa-child mr-2"></i>Maternelles et primaires</label>
@@ -141,3 +141,4 @@
 
 <div id="marker" data-image-url="<%= image_url("green-marker.svg") %>">
 </div>
+
