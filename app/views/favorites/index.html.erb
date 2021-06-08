@@ -49,6 +49,9 @@
 
           <div class="checkboxes pt-3">
 
+            <%= f.check_box :train_station, "data-search-target": "train_station" %>
+            <label for="train_station"><i class="fas fa-train mr-2"></i>Gare SNCF voyageurs</label>
+
             <%= f.check_box :primary_school, "data-search-target": "primarySchool"%>
             <label for="primary_school"><i class="fas fa-child mr-2"></i>Maternelles et primaires</label>
 
@@ -120,7 +123,7 @@
 
             <%= f.check_box :medical_store, "data-search-target": "medical_store" %>
             <label for="medical_store"><i class="fas fa-wheelchair mr-2"></i>Matériels médicaux</label>
-            
+
             <div class="btn-icon" data-action="click->search#navigate">
               <i class="fas fa-search-location"></i>
             </div>

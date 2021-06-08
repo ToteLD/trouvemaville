@@ -50,6 +50,7 @@ class CitiesController < ApplicationController
                                                                        optic: params[:optic],\
                                                                        plant: params[:plant],\
                                                                        gas_station: params[:gas_station],\
+                                                                       train_station: params[:train_station],\
                                                                        medical_store: params[:medical_store],\
                                                                        age_average: params[:max_age_average],\
                                                                        rating: rating(city) })
@@ -116,6 +117,8 @@ class CitiesController < ApplicationController
     @plant_presence = params[:plant].present? && params[:plant] == "1"
     @gas_station_presence = params[:gas_station].present? && params[:gas_station] == "1"
     @medical_store_presence = params[:medical_store].present? && params[:medical_store] == "1"
+    @train_station_presence = params[:train_station].present? && params[:train_station] == "1"
+
     # city global rating calculation
     @criteria_selected_nb = 0
 
@@ -145,6 +148,7 @@ class CitiesController < ApplicationController
     @criteria_selected_nb += 1 if @plant_presence
     @criteria_selected_nb += 1 if @gas_station_presence
     @criteria_selected_nb += 1 if @medical_store_presence
+    @criteria_selected_nb += 1 if @train_station_presence
 
     @match_criteria_nb = 0
 
@@ -174,6 +178,7 @@ class CitiesController < ApplicationController
     @match_criteria_nb += 1 if @plant_presence && city.plant
     @match_criteria_nb += 1 if @gas_station_presence && city.gas_station
     @match_criteria_nb += 1 if @medical_store_presence && city.medical_store
+    @match_criteria_nb += 1 if @train_station_presence && city.train_station
 
     if @criteria_selected_nb.positive?
       return ((@match_criteria_nb.to_f / @criteria_selected_nb) * 100).round

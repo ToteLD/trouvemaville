@@ -6,7 +6,13 @@ require 'open-uri'
 # City.destroy_all
 # User.destroy_all
 
-=begin
+##seeds generation upon CSV files
+# cities = City.all
+# cities.each do |city|
+#  city.house_marketprice = 0
+#  city.save
+# end
+
 puts "Population seeds incoming..."
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 filepath    = 'db/fixtures/population.csv'
@@ -38,6 +44,58 @@ CSV.foreach(filepath, csv_options) do |row|
 end
 
 
+puts "Train stations seeds incoming..."
+## Nota1: These seeds are based on .json file from SNCF train french company.
+## The file contains only train stations accessible by TRAINS for TRAVELERS.
+## Train stations served by "TER-buses" or trains carrying only goods, are not in the files and will not be in the db
+
+## Nota2: Some big cities have more than one train station in the .json file --> i.e Toulouse city.
+## --> The train_station criteria will be set as "true" as soon as one train station is found in the .json file
+
+filepath = 'db/fixtures/referentiel-gares-voyageurs.json'
+serialized_train_stations = File.read(filepath)
+train_stations = JSON.parse(serialized_train_stations)
+
+@updated = 0
+
+train_stations.each do |train_station|
+  city_to_update = false
+  @geocodes = []
+
+  department = train_station["fields"]["departement_numero"]
+  city_code = train_station["fields"]["commune_code"]
+  train_station_name = train_station["fields"]["gare_alias_libelle_fronton"]
+
+  # setup the geocode
+  if (department == "2A" || department == "2B")
+    geocode = department + "%03d" % city_code.to_i
+    # puts "geocode: #{geocode}"
+  else
+    geocode = department.to_i.to_s + "%03d" % city_code.to_i
+    # puts "geocode: #{geocode}"
+  end
+  @geocodes << geocode
+
+  # update the db
+  city_to_update = City.find_by("geocode": geocode)
+  if city_to_update
+    city_to_update.update("train_station": true)
+    city_to_update.save!
+    # puts "#{city_to_update.name} updated"
+    # puts ""
+    @updated += 1
+  end
+end
+##detect haw many cities have more than one train station
+# double_values = 0
+# @geocodes.each do |geocode|
+#   double_values += 1 if @geocodes.count(geocode) > 1
+# end
+## puts "#{@updated} db updates"
+## puts "#{double_values} cities with more than 1 station"
+
+
+
 puts "Latitude & Longitude seeds incoming..."
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 filepath = 'db/fixtures/communes-coords-gps.csv'
@@ -49,7 +107,6 @@ CSV.foreach(filepath, csv_options) do |row|
   city.update(name: row['city_name'], latitude: row['latitude'], longitude: row['longitude'])
   city.save!
 end
-
 
 
 puts "Network seeds incoming..."
@@ -198,7 +255,7 @@ filepath    = 'db/fixtures/ecoles.csv'
 
 # Pour chaque ligne du fichier
 CSV.foreach(filepath, csv_options) do |row|
-
+  
   geocode = row['geocode']
   department_code = [22, 29, 35, 56]
   next unless (department_code.include?(geocode[0..1].to_i) && @geocode_population.include?(geocode))
@@ -220,7 +277,7 @@ CSV.foreach(filepath, csv_options) do |row|
 
   city.save!
 end
-=end
+
 
 # puts "Description and photos seeds incoming..."
 # cities = City.all
@@ -246,9 +303,8 @@ end
 # end
 
 
-
 puts "Prices market seeds incoming..."
-puts "      Reseting database market prices..."
+##puts "      Reseting database market prices..."
 
 updated = 0
 not_updated = 0
@@ -256,15 +312,14 @@ houses_updated = 0
 flats_updated = 0
 lands_updated = 0
 
-
-#reinitialize all cities prices market in db
-cities = City.all
-cities.each do | city |
-  city.house_marketprice = 0
-  city.flat_marketprice = 0
-  city.land_marketprice = 0
-  city.save!
-end
+##reinitialize all cities prices market in db
+#cities = City.all
+#cities.each do | city |
+  #city.house_marketprice = 0
+  #city.flat_marketprice = 0
+  #city.land_marketprice = 0
+  #city.save!
+#end
 
 puts "      Updating database market prices from 'db/fixtures/average_cities_market_prices.csv'..."
 
