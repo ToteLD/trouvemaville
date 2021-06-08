@@ -13,6 +13,7 @@ require 'open-uri'
 #  city.save
 # end
 
+=begin
 puts "Population seeds incoming..."
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 filepath    = 'db/fixtures/population.csv'
@@ -42,7 +43,7 @@ CSV.foreach(filepath, csv_options) do |row|
   # je sauve
   city.save!
 end
-
+=end
 
 puts "Train stations seeds incoming..."
 ## Nota1: These seeds are based on .json file from SNCF train french company.
@@ -95,7 +96,7 @@ end
 ## puts "#{double_values} cities with more than 1 station"
 
 
-
+=begin
 puts "Latitude & Longitude seeds incoming..."
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 filepath = 'db/fixtures/communes-coords-gps.csv'
@@ -398,3 +399,4 @@ if (houses_delta > 0 || flats_delta > 0 || lands_delta > 0)
   puts "      --> Either there has not been any real estate transaction or some new geocodes have emerged recently"
 end
 
+=end
