@@ -36,84 +36,72 @@
             <i id="clickable-arrow"class="fas fa-sort-down"></i>
           </div>
             <div class="checkboxes hidden" id="home-checkboxes">
+              <h3>Commerces</h3>
 
-              <%= check_box_tag "train_station",1, (:checked if params[:train_station].present?) %>
-              <label for="train_station"><i class="fas fa-train mr-2"></i>Gare SNCF voyageurs</label>
-
-              <%= check_box_tag "primary_school",1, (:checked if params[:primary_school].present?) %>
-              <label for="primary_school"><i class="fas fa-child mr-2"></i>Maternelles et primaires</label>
-
-              <%= check_box_tag "secondary_school", 1, (:checked if params[:secondary_school].present?) %>
-              <label for="secondary_school"><i class="fas fa-book mr-2"></i>Collèges et lycées</label>
-
-              <%= check_box_tag "fibre", 1, (:checked if params[:fibre].present?) %>
-              <label for="fibre"><i class="fas fa-wifi mr-2"></i>Fibre</label>
-
-              <%= check_box_tag "network", 1, (:checked if params[:network].present?) %>
-              <label for="network"><i class="fas fa-mobile-alt mr-2"></i>4G</label>
-
-               <%= check_box_tag "doctor", 1, (:checked if params[:doctor].present?) %>
-              <label for="doctor"><i class="fas fa-briefcase-medical mr-2"></i>Docteurs</label>
-
-              <%= check_box_tag "supermarket", 1, (:checked if params[:supermarket].present?)%>
-              <label for="supermarket"><i class="fas fa-shopping-cart mr-2"></i>Supermarchés</label>
-
-               <%= check_box_tag "handiwork", 1, (:checked if params[:handiwork].present?) %>
-              <label for="handiwork"><i class="fas fa-tools mr-2"></i>Bricolage</label>
-
-              <%= check_box_tag "grocery", 1, (:checked if params[:grocery].present?) %>
-              <label for="grocery"><i class="fas fa-shopping-basket mr-2"></i>Epiceries</label>
-
-              <%= check_box_tag "butchery", 1, (:checked if params[:butchery].present?) %>
+              <%= check_box_tag "sport" %>
+              <label for="sport"><i class="fas fa-running mr-2"></i>Articles de sports</label>
+              <%= check_box_tag "jewellery" %>
+              <label for="jewellery"><i class="fas fa-gem mr-2"></i>Bijouteries</label>
+              <%= check_box_tag "butchery" %>
               <label for="butchery"><i class="fas fa-drumstick-bite mr-2"></i>Boucheries</label>
-
-              <%= check_box_tag "bakery", 1, (:checked if params[:bakery].present?) %>
+              <%= check_box_tag "bakery" %>
               <label for="bakery"><i class="fas fa-bread-slice mr-2"></i>Boulangeries</label>
-
-              <%= check_box_tag "bookstore", 1, (:checked if params[:bookstore].present?) %>
+              <%= check_box_tag "handiwork" %>
+              <label for="handiwork"><i class="fas fa-tools mr-2"></i>Bricolage</label>
+              <%= check_box_tag "shoestore" %>
+              <label for="shoestore"><i class="fas fa-shoe-prints mr-2"></i>Chaussures</label>
+              <%= check_box_tag "hardware" %>
+              <label for="hardware"><i class="fas fa-brush mr-2"></i>Drogueries quincailleries</label>
+              <%= check_box_tag "it" %>
+              <label for="it"><i class="fas fa-blender-phone mr-2"></i>Electroménagers</label>
+              <%= check_box_tag "grocery" %>
+              <label for="grocery"><i class="fas fa-shopping-basket mr-2"></i>Epiceries</label>
+              <%= check_box_tag "plant" %>
+              <label for="plant"><i class="fas fa-leaf mr-2"></i>Fleuristes Jardineries</label>
+              <%= check_box_tag "bookstore" %>
               <label for="bookstore"><i class="fas fa-book-open mr-2"></i>Librairies</label>
-
-              <%= check_box_tag "clothe", 1, (:checked if params[:clothe].present?) %>
+              <%= check_box_tag "furniture" %>
+              <label for="furniture"><i class="fas fa-couch mr-2"></i>Meubles</label>
+              <%= check_box_tag "optic" %>
+              <label for="optic"><i class="fas fa-glasses mr-2"></i>Opticiens</label>
+              <%= check_box_tag "cosmetic" %>
+              <label for="cosmetic"><i class="fas fa-magic mr-2"></i>Parfumeries</label>
+              <%= check_box_tag "fish_market" %>
+              <label for="fish_market"><i class="fas fa-fish mr-2"></i>Poissonneries</label>
+              <%= check_box_tag "supermarket" %>
+              <label for="supermarket"><i class="fas fa-shopping-cart mr-2"></i>Supermarchés</label>
+              <%= check_box_tag "clothe" %>
               <label for="clothe"><i class="fas fa-tshirt mr-2"></i>Vêtements</label>
 
-              <%= check_box_tag "shoestore", 1, (:checked if params[:shoestore].present?) %>
-              <label for="shoestore"><i class="fas fa-shoe-prints mr-2"></i>Chaussures</label>
+              <h3>Médical</h3>
 
-              <%= check_box_tag "fish_market", 1, (:checked if params[:fish_market].present?) %>
-              <label for="fish_market"><i class="fas fa-fish mr-2"></i>Poissonneries</label>
-
-              <%= check_box_tag "furniture", 1, (:checked if params[:furniture].present?) %>
-              <label for="furniture"><i class="fas fa-couch mr-2"></i>Meubles</label>
-
-              <%= check_box_tag "sport", 1, (:checked if params[:sport].present?) %>
-              <label for="sport"><i class="fas fa-running mr-2"></i>Articles de sports</label>
-
-              <%= check_box_tag "it", 1, (:checked if params[:it].present?) %>
-              <label for="it"><i class="fas fa-blender-phone mr-2"></i>Electroménagers</label>
-
-              <%= check_box_tag "hardware", 1, (:checked if params[:hardware].present?) %>
-              <label for="hardware"><i class="fas fa-brush mr-2"></i>Drogueries quincailleries</label>
-
-              <%= check_box_tag "jewellery", 1, (:checked if params[:jewellery].present?) %>
-              <label for="jewellery"><i class="fas fa-gem mr-2"></i>Bijouteries</label>
-
-              <%= check_box_tag "cosmetic", 1, (:checked if params[:cosmetic].present?) %>
-              <label for="cosmetic"><i class="fas fa-magic mr-2"></i>Parfumeries</label>
-
-              <%= check_box_tag "optic", 1, (:checked if params[:optic].present?) %>
-              <label for="optic"><i class="fas fa-glasses mr-2"></i>Opticiens</label>
-
-              <%= check_box_tag "plant", 1, (:checked if params[:plant].present?) %>
-              <label for="plant"><i class="fas fa-leaf mr-2"></i>Fleuristes Jardineries</label>
-
-              <%= check_box_tag "gas_station", 1, (:checked if params[:gas_station].present?) %>
-              <label for="gas_station"><i class="fas fa-gas-pump mr-2"></i>Stations services</label>
-
-              <%= check_box_tag "medical_store", 1, (:checked if params[:medical_store].present?) %>
+              <%= check_box_tag "doctor" %>
+              <label for="doctor"><i class="fas fa-briefcase-medical mr-2"></i>Docteurs</label>
+              <%= check_box_tag "medical_store" %>
               <label for="medical_store"><i class="fas fa-wheelchair mr-2"></i>Matériels médicaux</label>
-            </div>
-      </div>
 
+              <h3>Enseignements</h3>
+
+              <%= check_box_tag "secondary_school" %>
+              <label for="secondary_school"><i class="fas fa-book mr-2"></i>Collèges et lycées</label>
+              <%= check_box_tag "primary_school" %>
+              <label for="primary_school"><i class="fas fa-child mr-2"></i>Maternelles et primaires</label>
+
+              <h3>Multimédia</h3>
+
+              <%= check_box_tag "fibre" %>
+              <label for="fibre"><i class="fas fa-wifi mr-2"></i>Fibre</label>
+              <%= check_box_tag "network" %>
+              <label for="network"><i class="fas fa-mobile-alt mr-2"></i>4G</label>
+
+
+              <h3>Voyages</h3>
+              <%= check_box_tag "train_station" %>
+              <label for="train_station"><i class="fas fa-train mr-2"></i>Gare SNCF voyageurs</label>
+              <%= check_box_tag "gas_station" %>
+              <label for="gas_station"><i class="fas fa-gas-pump mr-2"></i>Stations services</label>
+            </div>
+        </div>
       </div>
     <%= submit_tag "Rechercher sur ces critères", class: "btn" %>
     </div>
